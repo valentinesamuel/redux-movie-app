@@ -2,7 +2,7 @@ export const COLORS = {
   red: "#E01E26",
   black: "#080D11",
   white: "#FFFFFF",
-  grey: "#181818",
+  grey: "#2f323a",
 };
 
 export const FONT = {

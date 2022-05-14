@@ -11,7 +11,7 @@ const Navbar = () => {
       <NavLink to="">Pricing</NavLink>
       <NavLink to="">Contact Us</NavLink>
 
-      <Button buttonType={BUTTON_TYPE_CLASSES.black}>Log in</Button>
+      <Button buttonType={BUTTON_TYPE_CLASSES.red}>Log in</Button>
     </NavbarContainer>
   );
 }

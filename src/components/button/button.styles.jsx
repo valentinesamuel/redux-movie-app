@@ -12,36 +12,49 @@ export const BaseButton = styled.button`
   font-size: 1em;
   line-height: 3em;
   transition: ${DURATION.point3}s;
-
-  &:hover {
-    border: 1px solid ${COLORS.white};
+border-radius:5px;
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 -3.25em 0 0 ${COLORS.red};
   }
 `;
 
 export const RedButton = styled(BaseButton)`
   background-color: ${COLORS.red};
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: ${COLORS.black};
+    box-shadow: inset 0 -3.25em 0 0 ${COLORS.white};
+  }
 `;
 
 export const GreyButton = styled(BaseButton)`
   background-color: ${COLORS.grey};
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: none;
+  }
 `;
 
 export const BlackButton = styled(BaseButton)`
   background-color: ${COLORS.black};
-
-  &:hover {
-    border: 1px solid ${COLORS.white};
-    background-color: ${COLORS.white};
-    color: ${COLORS.black};
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: none;
   }
 `;
 
 export const WhiteButton = styled(BaseButton)`
   background-color: ${COLORS.white};
-color: ${COLORS.black}
-border: 1px solid ${COLORS.white}
-  $:hover{
-      border: 1px solid ${COLORS.red};
+  color: ${COLORS.black};
 
+  &:hover {
+    background-color: transparent;
+    color: ${COLORS.white};
   }
-  `;
+`;

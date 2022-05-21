@@ -12,7 +12,7 @@ export const BaseButton = styled.button`
   font-size: 1em;
   line-height: 3em;
   transition: ${DURATION.point3}s;
-
+border-radius:5px;
   &:hover,
   &:focus {
     box-shadow: inset 0 -3.25em 0 0 ${COLORS.red};
@@ -47,14 +47,13 @@ export const BlackButton = styled(BaseButton)`
     background-color: transparent;
     border: none;
   }
-  `;
-  
-  export const WhiteButton = styled(BaseButton)`
+`;
+
+export const WhiteButton = styled(BaseButton)`
   background-color: ${COLORS.white};
   color: ${COLORS.black};
-  
+
   &:hover {
-    
     background-color: transparent;
     color: ${COLORS.white};
   }

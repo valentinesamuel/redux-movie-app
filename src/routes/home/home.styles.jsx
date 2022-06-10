@@ -1,14 +1,11 @@
-import { Fragment } from "react";
 import styled from "styled-components";
 import Button from "../../components/button/button.component";
-import { COLORS, FONTSIZES, PAGEDIM } from "../../utilities/designTokens";
+import { COLORS, FONTSIZES } from "../../utilities/designTokens";
 
-export const HomeContainer = styled.div`
-padding: 0px ;
-`
+export const HomeContainer = styled.div``;
 
 export const HeaderSection = styled.header`
-  padding: 10% 0 10% ${PAGEDIM.horizontalPadding};
+  padding: 10% 0 10% 4%;
   background-image: linear-gradient(
       5deg,
       rgba(0, 0, 0, 0.6474964985994398) 0%,
@@ -22,7 +19,7 @@ export const HeaderSection = styled.header`
 
 export const HeaderText = styled.h1`
   font-size: ${FONTSIZES.h1};
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
   max-width: 50%;
 `;
 
@@ -31,37 +28,61 @@ export const RedText = styled.span`
 `;
 
 export const HeaderBody = styled.p`
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   opacity: 80%;
 `;
 
 export const CtaButton = styled(Button)`
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-left: 2.1875rem;
+  padding-right: 2.1875rem;
 `;
 
 export const WatchSection = styled.section`
-  padding: 5% ${PAGEDIM.horizontalPadding};
+  padding: 5% 4%;
 `;
 
 export const WatchText = styled.h2`
   color: ${COLORS.black};
   font-size: ${FONTSIZES.h3};
   width: 35%;
-  `;
-  
-  export const WatchActionsContainer = styled.div`
+
+  @media only screen and (max-width: 30rem) {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
+`;
+
+export const WatchActionsContainer = styled.div`
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 30rem) {
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `;
 export const WatchAction = styled.div`
-  max-width: 15%;
+  text-align: center;
+  width: 15%;
   padding: 5% 0 0 0;
 
   p,
   h2 {
     color: ${COLORS.black};
     margin-top: 6%;
-    line-height:21px;
+    line-height: 1.3125rem;
   }
+
+  @media only screen and (max-width: 30rem) {
+    width: 100%;
+    text-align: center;
+  }
+`;
+
+export const Icon = styled.div`
+  height: 30px;
 `;

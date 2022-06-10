@@ -31,7 +31,3 @@ export const FONTSIZES = {
   h5: "1.2rem",
 };
 
-
-export const PAGEDIM = {
-  horizontalPadding: "4%",
-}

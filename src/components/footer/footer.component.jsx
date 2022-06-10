@@ -1,6 +1,14 @@
 import React from "react";
 import { LogoLink } from "../../routes/navigation/navigation.styles";
-import { ExternalLink, FooterContainer, Instructions, InstText, InternalLink, Links, Paragraph } from "./footer.styles";
+import {
+  ExternalLink,
+  FooterContainer,
+  Instructions,
+  InstText,
+  InternalLink,
+  Links,
+  Paragraph,
+} from "./footer.styles";
 
 const Footer = () => {
   return (
@@ -20,11 +28,11 @@ const Footer = () => {
           <ExternalLink href="">LinkedIn</ExternalLink>
           <ExternalLink href="">Instagram</ExternalLink>
           <ExternalLink href="">Github</ExternalLink>
-              </div>
-              
+        </div>
+
         <div>
-          <InternalLink to=''>Home</InternalLink>
-          <InternalLink to=''>My List</InternalLink>
+          <InternalLink to="">Home</InternalLink>
+          <InternalLink to="">My List</InternalLink>
         </div>
       </Links>
     </FooterContainer>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS, FONT, PAGEDIM } from "../../utilities/designTokens";
+import { COLORS, FONT, } from "../../utilities/designTokens";
 
 export const LogoLink = styled(Link)`
   font-size: 4rem;
@@ -16,7 +16,8 @@ export const NavContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  padding: 0 ${PAGEDIM.horizontalPadding};
+  padding: 0 4%;
   width: 100%;
   background: #040404;
 `;
+

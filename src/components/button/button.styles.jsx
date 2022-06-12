@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS, DURATION, FONT } from "../../utilities/designTokens";
+import { BORDERRADIUS, COLORS, DURATION, FONT } from "../../utilities/designTokens";
 
 export const BaseButton = styled.button`
   background-color: ${COLORS.black};
@@ -12,7 +12,7 @@ export const BaseButton = styled.button`
   font-size: 1em;
   line-height: 3em;
   transition: ${DURATION.point3}s;
-border-radius:5px;
+  border-radius: ${BORDERRADIUS.fivepixel};
   &:hover,
   &:focus {
     box-shadow: inset 0 -3.25em 0 0 ${COLORS.red};

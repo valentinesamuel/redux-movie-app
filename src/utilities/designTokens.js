@@ -29,5 +29,9 @@ export const FONTSIZES = {
   h3: "2rem",
   h4: "1.5rem",
   h5: "1.2rem",
+  p: "1rem",
 };
 
+export const BORDERRADIUS = {
+  fivepixel: "5px",
+}

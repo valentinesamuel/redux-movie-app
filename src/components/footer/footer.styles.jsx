@@ -18,7 +18,9 @@ export const FooterContainer = styled.footer`
   }
 `;
 
-export const Instructions = styled.div``;
+export const Instructions = styled.div`
+max-width:20%;
+`;
 
 export const InstText = styled.h2`
   font-weight: ${FONTWEIGHT.semiBold};
@@ -37,30 +39,18 @@ export const Paragraph = styled.p`
   }
 `;
 
+
 export const Links = styled.div`
-  display: flex;
-  color: ${COLORS.white};
-  opacity: 0.7;
-
-  div {
-    width: max-content;
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media only screen and (max-width: 30rem) {
-    flex-direction: column;
-  }
-
-  @media only screen and (max-width: 50rem) {
-    flex-direction: column;
-  }
+display:flex;
+flex-direction:column;
 `;
 
 export const ExternalLink = styled.a`
   text-decoration: none;
   margin: 0.625rem 0;
 `;
+
+
 
 export const InternalLink = styled(Link)`
   text-decoration: none;

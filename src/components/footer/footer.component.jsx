@@ -21,20 +21,21 @@ const Footer = () => {
         <Paragraph>(234) 234-234-234</Paragraph>
         <Paragraph>email gfoes here</Paragraph>
       </Instructions>
-      <Links>
-        <div>
-          <ExternalLink href="">Facebook</ExternalLink>
-          <ExternalLink href="">Twitter</ExternalLink>
-          <ExternalLink href="">LinkedIn</ExternalLink>
-          <ExternalLink href="">Instagram</ExternalLink>
-          <ExternalLink href="">Github</ExternalLink>
-        </div>
 
-        <div>
-          <InternalLink to="">Home</InternalLink>
-          <InternalLink to="">My List</InternalLink>
-        </div>
+      <Links>
+        <ExternalLink href="">Facebook</ExternalLink>
+        <ExternalLink href="">Twitter</ExternalLink>
+        <ExternalLink href="">LinkedIn</ExternalLink>
+        <ExternalLink href="">Instagram</ExternalLink>
+        <ExternalLink href="">Github</ExternalLink>
       </Links>
+
+
+      <Links>
+        <InternalLink to="">Home</InternalLink>
+        <InternalLink to="">My List</InternalLink>
+      </Links>
+
     </FooterContainer>
   );
 };

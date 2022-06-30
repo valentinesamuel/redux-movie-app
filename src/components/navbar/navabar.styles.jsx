@@ -20,6 +20,9 @@ export const NavLink = styled(Link)`
   }
 `;
 
+export const Auth = styled(Link)`
+
+`
 
 export const NavbarContainer = styled.div`
 

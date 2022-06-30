@@ -10,8 +10,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigation/>}>
         <Route index element={<Home />} />
-        <Route path="sigin" element={ <SignIn/>} />
-        <Route path="sigout" element={ <SignOut/>} />
+        <Route path="signin" element={ <SignIn/>} />
+        <Route path="signout" element={ <SignOut/>} />
       </Route>
    </Routes>
   );

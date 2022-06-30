@@ -1,5 +1,7 @@
+
+import { Link } from "react-router-dom";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component"
-import { NavbarContainer, NavLink } from "./navabar.styles"
+import { Auth, NavbarContainer, NavLink } from "./navabar.styles"
 
 
 const Navbar = () => {
@@ -10,7 +12,12 @@ const Navbar = () => {
       <NavLink to="">Pricing</NavLink>
       <NavLink to="">Contact Us</NavLink>
 
-      <Button buttonType={BUTTON_TYPE_CLASSES.red}>Log in</Button>
+      <Link to='signin'>
+        <Button buttonType={BUTTON_TYPE_CLASSES.red}>
+          ubh
+      </Button>
+      </Link>
+
     </NavbarContainer>
   );
 }

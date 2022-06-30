@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { COLORS, FONTWEIGHT } from "../../utilities/designTokens";
 
 export const FooterContainer = styled.footer`
-  background-color: ${COLORS.matteBlack};
+  background-color: ${COLORS.black};
   display: flex;
   padding: 6% 7%;
+  width:100%;
   justify-content: space-between;
 
   @media only screen and (max-width: 30rem) {
@@ -19,13 +20,22 @@ export const FooterContainer = styled.footer`
 `;
 
 export const Instructions = styled.div`
-max-width:20%;
+width:20%;
+
+@media only screen and (max-width: 30rem){
+width:100%;
+}
+
+@media only screen and (max-width: 50rem){
+width:100%;
+margin:6% 0;
+}
 `;
 
 export const InstText = styled.h2`
   font-weight: ${FONTWEIGHT.semiBold};
   margin-bottom: 4%;
-  F @media only screen and (max-width: 30rem) {
+@media only screen and (max-width: 30rem) {
     max-width: 100%;
     margin: 1rem 0;
   }

@@ -1,8 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import FormInput from "../../components/form-input/form-input.component";
 import { PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
 import {BUTTON_TYPE_CLASSES} from "../../components/button/button.component";
+import Footer from "../../components/footer/footer.component";
 
 const defaultformFields = {
   email: "",
@@ -24,7 +24,8 @@ const SignIn = () => {
   };
 
   return (
-    <SignInContainer>
+        <>
+    <SignInContainer >
       <h2>Sign in</h2>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -43,6 +44,7 @@ const SignIn = () => {
           name="password"
           value={password}
         />
+        
       </form>
       <PasswordRecoveryContainer>
         <form>
@@ -57,6 +59,8 @@ const SignIn = () => {
         <SignUpLink to=""> Sign Up</SignUpLink>
       </RegisterationPrompt>
     </SignInContainer>
+      <Footer/>
+    </>
   );
 };
 

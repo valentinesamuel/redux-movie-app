@@ -2,20 +2,20 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.component";
 import AuthNavbar from "../../components/authNavbar/authNavbar.component";
-import { LogoLink, NavContainer } from "./navigation.styles";
+import { LogoLink, NavContainer,Nav } from "./navigation.styles";
 
 const Navigation = () => {
   const authed = false;
   return (
     //   if auth'd show authNavbar else show navbar
-    <div>
+    <Nav>
       <NavContainer>
         <LogoLink to="/">Feems</LogoLink>
         {authed ? <AuthNavbar /> : <Navbar />}
       </NavContainer>
 
       <Outlet />
-    </div>
+    </Nav>
   );
 };
 

@@ -1,9 +1,22 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/button.component";
+import { COLORS } from "../../utilities/designTokens";
 
 export const SignInContainer = styled.div`
-  background-color: black;
+  padding:5% 35%;
+  text-align:center;
+  background: ${COLORS.matteBlack};
+
+  @media only screen and (max-width: 30rem) {
+padding:15% 5%;
+height:100%;
+}
+
+@media only screen and (max-width: 50rem) {
+  height:max-content;
+  padding:15% 5%;
+  }
 `;
 
 export const PasswordRecoveryContainer = styled.div`
@@ -11,7 +24,6 @@ export const PasswordRecoveryContainer = styled.div`
   width: 100%;
   justify-content: space-between;
 `;
-
 
 export const RecoverPassword = styled(Link)``;
 

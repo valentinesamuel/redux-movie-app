@@ -10,7 +10,7 @@ export const HeaderSection = styled.header`
 padding: 10% 0 10% 4%;
 background-image: linear-gradient(
   5deg,
-  rgba(0, 0, 0, 0.6474964985994398) 0%,
+  rgba(0, 0, 0, 0.6474964985994398) 100%,
       rgba(0, 0, 0, 1) 100%
       ),
       ${({ imageUrl }) => `url(${imageUrl})`};

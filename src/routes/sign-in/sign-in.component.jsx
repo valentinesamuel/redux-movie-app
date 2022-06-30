@@ -26,7 +26,7 @@ const SignIn = () => {
   return (
         <>
     <SignInContainer >
-      <h2>Sign in</h2>
+      <h2>Welcome Back😊</h2>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
@@ -45,6 +45,7 @@ const SignIn = () => {
           value={password}
         />
         
+      <SignInButton type="submit" buttonType={BUTTON_TYPE_CLASSES.red}>Sign in</SignInButton>
       </form>
       <PasswordRecoveryContainer>
         <form>
@@ -53,10 +54,9 @@ const SignIn = () => {
         </form>
         <RecoverPassword to="">Forgot Password</RecoverPassword>
       </PasswordRecoveryContainer>
-      <SignInButton buttonType={BUTTON_TYPE_CLASSES.red}>Sign in</SignInButton>
       <RegisterationPrompt>
         <p>New here?</p>
-        <SignUpLink to=""> Sign Up</SignUpLink>
+        <SignUpLink to="/signup"> Sign Up</SignUpLink>
       </RegisterationPrompt>
     </SignInContainer>
       <Footer/>

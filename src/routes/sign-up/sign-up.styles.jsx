@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/button/button.component";
 import { COLORS } from "../../utilities/designTokens";
 
-export const SignInContainer = styled.div`
+export const SignUpContainer = styled.div`
   padding:5% 35%;
   text-align:center;
   background: ${COLORS.matteBlack};
@@ -19,27 +19,19 @@ height:100%;
   }
 `;
 
-export const PasswordRecoveryContainer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
-
-export const RecoverPassword = styled(Link)``;
-
-export const SignInButton = styled(Button)`
+export const SignUpButton = styled(Button)`
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 3rem;
 `;
 
-export const RegisterationPrompt = styled.div`
+export const LoginPrompt = styled.div`
   padding-top:2rem;
   display: flex;
   justify-content: center;
 `;
 
-export const SignUpLink = styled(Link)`
+export const SignInLink = styled(Link)`
   color: red;
   margin-left: 0.625rem;
 `;

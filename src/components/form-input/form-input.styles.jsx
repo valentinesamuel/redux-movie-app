@@ -30,7 +30,7 @@ export const FormInputLabel = styled.label`
   color: white;
   cursor: text;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
-  background-color: #000000;
+  background-color: ${COLORS.matteBlack};
 
   ${({ shrink }) => shrink && shrinkLabelStyles}
 `;

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react';
 import { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 import Footer from '../../components/footer/footer.component';
@@ -14,7 +13,8 @@ const defaultformFields = {
 
 const SignUp = () => {
   const[formFields, setFormFields] = useState(defaultformFields);
-  const { email, password,confirmPassword,displayName } = formFields;
+  const { email, password, confirmPassword, displayName } = formFields;
+  
 
   const handleChange = (event) => {
     const { name, value } = event.target;

@@ -3,6 +3,7 @@ import FormInput from "../../components/form-input/form-input.component";
 import { PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
 import {BUTTON_TYPE_CLASSES} from "../../components/button/button.component";
 import Footer from "../../components/footer/footer.component";
+import ConfettiSpray from "../../utilities/confetti";
 
 const defaultformFields = {
   email: "",
@@ -12,6 +13,7 @@ const defaultformFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultformFields);
   const { email, password } = formFields;
+  const registered = true;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +26,8 @@ const SignIn = () => {
   };
 
   return (
-        <>
+    <>
+   { registered && <ConfettiSpray/>}
     <SignInContainer >
       <h2>Welcome Back😊</h2>
       <form onSubmit={handleSubmit}>
@@ -60,7 +63,7 @@ const SignIn = () => {
       </RegisterationPrompt>
     </SignInContainer>
       <Footer/>
-    </>
+</>
   );
 };
 

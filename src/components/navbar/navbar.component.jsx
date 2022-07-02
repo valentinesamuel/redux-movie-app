@@ -14,7 +14,7 @@ const Navbar = () => {
 
       <Link to='signin'>
         <Button buttonType={BUTTON_TYPE_CLASSES.red}>
-          ubh
+          Sign In
       </Button>
       </Link>
 

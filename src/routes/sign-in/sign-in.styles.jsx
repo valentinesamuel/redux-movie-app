@@ -33,6 +33,20 @@ export const SignInButton = styled(Button)`
   margin-bottom: 3rem;
 `;
 
+export const AuthIcon = styled.img`
+height:auto;
+width:7%;
+margin:0 5%;
+cursor:pointer;
+`
+
+export const AuthProvider = styled.div`
+display:flex;
+width:100%;
+justify-content:center;
+margin-bottom:5%;
+`;
+
 export const RegisterationPrompt = styled.div`
   padding-top:2rem;
   display: flex;

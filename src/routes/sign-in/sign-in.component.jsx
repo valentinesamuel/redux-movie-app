@@ -1,9 +1,11 @@
 import { useState } from "react";
 import FormInput from "../../components/form-input/form-input.component";
-import { PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
+import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
 import {BUTTON_TYPE_CLASSES} from "../../components/button/button.component";
 import Footer from "../../components/footer/footer.component";
 import ConfettiSpray from "../../utilities/confetti";
+import GoogleIcon from '../../assets/icons/google.svg';
+import GithubIcon from '../../assets/icons/github.svg';
 
 const defaultformFields = {
   email: "",
@@ -13,7 +15,7 @@ const defaultformFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultformFields);
   const { email, password } = formFields;
-  const registered = true;
+  const registered = false;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,7 +48,11 @@ const SignIn = () => {
           onChange={handleChange}
           name="password"
           value={password}
-        />
+          />
+          <AuthProvider>
+            <AuthIcon src={GoogleIcon} alt="google-sign-in"/>
+            <AuthIcon src={GithubIcon} alt="github-sign-in"/>
+          </AuthProvider>
         
       <SignInButton type="submit" buttonType={BUTTON_TYPE_CLASSES.red}>Sign in</SignInButton>
       </form>

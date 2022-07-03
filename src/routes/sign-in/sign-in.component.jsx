@@ -7,6 +7,8 @@ import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
 import { signInWithGooglePopup } from "../../utilities/firebase";
+import { useDispatch } from "react-redux";
+import { loginWithGooglePopup } from "../../features/user/userSlice";
 
 const defaultformFields = {
   email: "",
@@ -14,6 +16,7 @@ const defaultformFields = {
 };
 
 const SignIn = () => {
+  const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
   const { email, password } = formFields;
   const registered = false;
@@ -28,10 +31,11 @@ const SignIn = () => {
     console.log(formFields);
   };
 
-const loginWithGoogle = async () => {
-  const response = await signInWithGooglePopup();
-  console.log(response);
-}
+  const loginWithGoogle = async () => {
+    // const response = await signInWithGooglePopup();
+    // console.log(response);
+    dispatch(loginWithGooglePopup());
+  }
 
   return (
     <>

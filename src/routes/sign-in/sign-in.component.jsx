@@ -6,7 +6,6 @@ import Footer from "../../components/footer/footer.component";
 import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
-import { signInWithGooglePopup } from "../../utilities/firebase";
 import { useDispatch } from "react-redux";
 import { loginWithGooglePopup } from "../../features/user/userSlice";
 
@@ -32,8 +31,6 @@ const SignIn = () => {
   };
 
   const loginWithGoogle = async () => {
-    // const response = await signInWithGooglePopup();
-    // console.log(response);
     dispatch(loginWithGooglePopup());
   }
 

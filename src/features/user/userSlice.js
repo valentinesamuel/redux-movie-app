@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { signInWithGooglePopup } from "../../utilities/firebase";
+import { getUser, signInWithGooglePopup } from "../../utilities/firebase";
 
 const initialState = {
   userData: null,
@@ -9,6 +9,11 @@ const initialState = {
 export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async () => {
     const response = await signInWithGooglePopup()
     return response;
+})
+
+export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async (userUid) => {
+    const response = await getUser(userUid);
+    console.log(response);
 })
 
 export const userSlice = createSlice({

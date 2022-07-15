@@ -11,8 +11,8 @@ export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePo
     return response;
 })
 
-export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async (userUid) => {
-    const response = await getUser(userUid);
+export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async (email) => {
+    const response = await getUser(email);
     console.log(response);
 })
 

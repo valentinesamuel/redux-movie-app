@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component"
-import { Auth, NavbarContainer, NavLink } from "./navabar.styles"
+import { NavbarContainer, NavLink } from "./navabar.styles"
 
 
 const Navbar = () => {

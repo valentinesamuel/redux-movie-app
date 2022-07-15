@@ -54,8 +54,8 @@ export const getCategoriesAndDocuments = async () => {
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
 }
 
-export const getUser = async (userUid) => {
-  const collectionRef = collection(db, "users", userUid);
+export const getUser = async (email) => {
+  const collectionRef = collection(db, "users", email);
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs
@@ -66,7 +66,8 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
-  const userDocRef = doc(db, 'users', userAuth.uid);
+  // const userDocRef = doc(db, 'users', userAuth.uid);
+  const userDocRef = doc(db, 'users', userAuth.email);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;

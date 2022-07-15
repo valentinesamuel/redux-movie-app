@@ -8,7 +8,6 @@ import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
 import { useDispatch } from "react-redux";
 import { loginWithGooglePopup } from "../../features/user/userSlice";
-import { getCategoriesAndDocuments } from "../../utilities/firebase";
 
 const defaultformFields = {
   email: "",
@@ -34,8 +33,7 @@ const SignIn = () => {
   const loginWithGoogle = async () => {
     dispatch(loginWithGooglePopup());
 
-    // const response = await getCategoriesAndDocuments();
-    // console.log(response)
+
   }
 
   return (

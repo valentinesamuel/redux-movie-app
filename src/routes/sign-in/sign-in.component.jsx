@@ -35,8 +35,6 @@ const SignIn = () => {
 
   const loginWithGoogle = async () => {
     dispatch(loginWithGooglePopup());
-
-
   }
 
   return (

@@ -8,7 +8,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc, writeBatch } from "firebase/firestore";
+import { collection, doc,where, getDoc, getDocs, getFirestore, query, setDoc, writeBatch } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAq0W_85Mup1gZowKexlhNxkHMxVKwRAr4",
@@ -55,10 +55,11 @@ export const getCategoriesAndDocuments = async () => {
 }
 
 export const getUser = async (email) => {
-  const collectionRef = collection(db, "users", email);
-  const q = query(collectionRef);
+  const collectionRef = collection(db, 'users')
+  const q = query(collectionRef, where("email", "==", email));
   const querySnapshot = await getDocs(q)
-  return querySnapshot.docs
+  return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
+
 }
 
 export const createUserDocumentFromAuth = async (

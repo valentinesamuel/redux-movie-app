@@ -6,8 +6,8 @@ import { LogoLink, NavContainer, Nav } from "./navigation.styles";
 import { useSelector } from "react-redux";
 
 const Navigation = () => {
-  const authed = useSelector((state) => state.userSlice.userData.user);
-
+  const authed = false;
+//useSelector((state) => state.userSlice.userData.user)
   return (
     //   if auth'd show authNavbar else show navbar
     <Nav>

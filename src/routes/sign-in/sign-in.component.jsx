@@ -1,13 +1,15 @@
 import { useState } from "react";
 import FormInput from "../../components/form-input/form-input.component";
 import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
+
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 import Footer from "../../components/footer/footer.component";
 import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginWithGooglePopup } from "../../features/user/userSlice";
+import { createUserDocumentFromAuth, getUser } from "../../utilities/firebase";
 
 const defaultformFields = {
   email: "",
@@ -17,6 +19,7 @@ const defaultformFields = {
 const SignIn = () => {
   const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
+ const user = useSelector((state) => state.userSlice.userData.user)
   const { email, password } = formFields;
   const registered = false;
 
@@ -25,9 +28,12 @@ const SignIn = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formFields);
+   // console.log(formFields);
+    const response = await getUser(email);
+    console.log(response);
+
   };
 
   const loginWithGoogle = async () => {

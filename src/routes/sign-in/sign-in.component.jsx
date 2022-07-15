@@ -7,9 +7,9 @@ import Footer from "../../components/footer/footer.component";
 import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
-import { useDispatch, useSelector } from "react-redux";
-import { loginWithGooglePopup } from "../../features/user/userSlice";
-import { createUserDocumentFromAuth, getUser } from "../../utilities/firebase";
+import { useDispatch } from "react-redux";
+import { getCurrentUser, loginWithGooglePopup } from "../../features/user/userSlice";
+
 
 const defaultformFields = {
   email: "",
@@ -19,7 +19,7 @@ const defaultformFields = {
 const SignIn = () => {
   const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
- const user = useSelector((state) => state.userSlice.userData.user)
+
   const { email, password } = formFields;
   const registered = false;
 
@@ -30,10 +30,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   // console.log(formFields);
-    const response = await getUser(email);
-    console.log(response);
-
+    dispatch(getCurrentUser(email))
   };
 
   const loginWithGoogle = async () => {

@@ -1,10 +1,8 @@
-import { useSelector } from "react-redux";
 
-const AuthNavbar = () => {
-  const userName = useSelector((state) => state.userSlice.userData.user.displayName);
+const AuthNavbar = ({ currentUserName }) => {
   return (
     <div>
-      <p>{userName}</p>
+      <p>{currentUserName}</p>
     </div>
   )
 }

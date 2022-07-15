@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUser, signInWithGooglePopup } from "../../utilities/firebase";
+import { getUser, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 
 const initialState = {
-  userData: null,
+  userData:null,
   status: "unauth", //'authing' | 'authed' | 'failed' | 'unauth'
 };
 
@@ -13,6 +13,11 @@ export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePo
 
 export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async (email) => {
     const response = await getUser(email);
+    return response;
+})
+
+export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () => {
+    const response = await signOutUser()
     return response;
 })
 
@@ -35,6 +40,9 @@ export const userSlice = createSlice({
             state.status = "authing";
         }).addCase(getCurrentUser.rejected, (state, action) => {
             state.status = "failed";
+        }).addCase(logCurrentUserOut.fulfilled, (state, action) => {
+            state.userData =null;
+              state.status = "unauth";
         })
     }
 })

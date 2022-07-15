@@ -13,11 +13,11 @@ const Navigation = () => {
     <Nav>
       <NavContainer>
         <LogoLink to="/">Feems</LogoLink>
-        <Links>
+       {auth.userData ? <Links>
           <NavLink to="">Home</NavLink>
           <NavLink to="">Movies</NavLink>
           <NavLink to="">Tv Shows</NavLink>
-        </Links>
+        </Links> : ""}
         {auth.userData ? <AuthNavbar/> : <Navbar />}
       </NavContainer>
       <Outlet />

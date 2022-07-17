@@ -3,6 +3,7 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
+  GithubAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -28,11 +29,17 @@ googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
+const githubProvider = new GithubAuthProvider();
+
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => {
 return  signInWithPopup(auth, googleProvider);
 };
+
+export const signInWithGithubPopup = () => {
+  return signInWithPopup(auth, githubProvider);
+}
 
 export const db = getFirestore();
 

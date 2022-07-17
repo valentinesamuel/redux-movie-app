@@ -9,6 +9,7 @@ import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
 import { useDispatch } from "react-redux";
 import { getCurrentUser, loginWithGooglePopup } from "../../features/user/userSlice";
+import { signInWithGithubPopup } from "../../utilities/firebase";
 
 
 const defaultformFields = {
@@ -37,6 +38,10 @@ const SignIn = () => {
     dispatch(loginWithGooglePopup());
   }
 
+  const loginWithGithubPopup = async () => {
+    dispatch(loginWithGithubPopup());
+}
+
   return (
     <>
       {registered && <ConfettiSpray />}
@@ -61,7 +66,7 @@ const SignIn = () => {
           />
           <AuthProvider>
             <AuthIcon onClick={loginWithGoogle} src={GoogleIcon} alt="google-sign-in" />
-            <AuthIcon src={GithubIcon} alt="github-sign-in" />
+            <AuthIcon src={GithubIcon} alt="github-sign-in" onClick={loginWithGithubPopup}/>
           </AuthProvider>
           <SignInButton type="submit" buttonType={BUTTON_TYPE_CLASSES.red}>Sign in</SignInButton>
         </form>

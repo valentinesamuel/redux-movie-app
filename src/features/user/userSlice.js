@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUser, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
+import { getUser, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 
 const initialState = {
-  userData:null,
-  status: "unauth", //'authing' | 'authed' | 'failed' | 'unauth'
+    userData: null,
+    status: "unauth", //'authing' | 'authed' | 'failed' | 'unauth'
 };
 
 export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async () => {
@@ -18,6 +18,12 @@ export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async 
 
 export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () => {
     const response = await signOutUser()
+    return response;
+})
+
+export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
+    const response = await signInWithGithubPopup();
+    console.log(response);
     return response;
 })
 
@@ -41,8 +47,8 @@ export const userSlice = createSlice({
         }).addCase(getCurrentUser.rejected, (state, action) => {
             state.status = "failed";
         }).addCase(logCurrentUserOut.fulfilled, (state, action) => {
-            state.userData =null;
-              state.status = "unauth";
+            state.userData = null;
+            state.status = "unauth";
         })
     }
 })

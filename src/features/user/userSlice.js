@@ -24,7 +24,7 @@ export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () =>
 export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
     const response = await signInWithGithubPopup();
     console.log(response);
-    return response;
+    // return response;
 })
 
 export const userSlice = createSlice({

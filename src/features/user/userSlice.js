@@ -23,8 +23,9 @@ export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () =>
 
 export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
     const response = await signInWithGithubPopup();
-    console.log(response);
-    // return response;
+    const {displayName, email} = response.user;
+    const userDetails = {displayName, email}
+    return userDetails;
 })
 
 export const userSlice = createSlice({
@@ -49,6 +50,9 @@ export const userSlice = createSlice({
         }).addCase(logCurrentUserOut.fulfilled, (state, action) => {
             state.userData = null;
             state.status = "unauth";
+        }).addCase(loginWithGithubPopup.fulfilled, (state, action) => {
+            state.userData = action.payload;
+            state.status = "authed";
         })
     }
 })

@@ -1,3 +1,14 @@
+import axios from 'axios'
+const TMBD_API_KEY = "c6560ae79e0bf6e21bb35eb5892ebc25"
+
+export const getLatestMovie = async () => {
+  const outer = axios.get(`https://api.themoviedb.org/3/movie/76341?api_key=${TMBD_API_KEY}`)
+        .then(data => {
+            return data.data;
+        })
+    return outer
+}
+
 /*
 There are 3 ways to search for and find movies, TV shows and people on TMDB.
  /search - Text based search is the most common way. You provide a query string and we provide the closest match. Searching by text takes into account all original, translated, alternative names and titles.
@@ -6,7 +17,7 @@ There are 3 ways to search for and find movies, TV shows and people on TMDB.
 
 /find - The last but still very useful way to find data is with existing external IDs. For example, if you know the IMDB ID of a movie, TV show or person, you can plug that value into this method and we'll return anything that matches. This can be very useful when you have an existing tool and are adding our service to the mix.
 
-
+process,env.TMBD_API_KEY
 General Features
 Top rated movies
 Upcoming movies

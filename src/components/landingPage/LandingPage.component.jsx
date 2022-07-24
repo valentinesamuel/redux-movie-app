@@ -2,8 +2,15 @@ import { FaTv } from "react-icons/fa";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { HeaderSection, HeaderText, HomeContainer, CtaButton, HeaderBody, Icon, RedText, WatchAction, WatchActionsContainer, WatchSection, WatchText, } from './LandingPage.styles';
 import Image from '../../assets/images/landing-image.jpg'
+import { getLatestMovie } from "../../utilities/tmdb";
 
 const LandingPage = () => {
+
+    
+    const onGetMovie = async () => {
+        const response = await getLatestMovie();
+        console.log(response)
+    }
     return (
         <HomeContainer>
             <HeaderSection imageUrl={Image}>
@@ -11,7 +18,7 @@ const LandingPage = () => {
                     Watch the best and <RedText>exclusive</RedText> movies.
                 </HeaderText>
                 <HeaderBody>Watch anywhere. Cancel anytime</HeaderBody>
-                <CtaButton buttonType={BUTTON_TYPE_CLASSES.red}>
+                <CtaButton onClick={onGetMovie} buttonType={BUTTON_TYPE_CLASSES.red}>
                     Check it out
                 </CtaButton>
             </HeaderSection>

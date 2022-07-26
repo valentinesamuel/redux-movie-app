@@ -1,12 +1,15 @@
-import { configureStore,combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { PERSIST, persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from './user/userSlice'
+import movieReducer from './movie/movieSlice'
+import userMovieListReducer from "./movie/userMovieList";
 
 
 const rootReducer = combineReducers({
-  userSlice: userReducer
-
+  userSlice: userReducer,
+  movieSlice: movieReducer,
+  userMoviesList: userMovieListReducer
 })
 
 const persistConfig = {
@@ -22,10 +25,12 @@ export const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [
-         PERSIST,
+          PERSIST,
           "userData/loginWithGooglePopup/fulfilled",
+          "userMoviesList",
+          "movieSlice"
         ],
-        ignoredPaths: ["userSlice.userData"],
+        ignoredPaths: ["userSlice.userData", "movieSlice", "userMoviesList"],
       },
     }),
 });

@@ -1,14 +1,61 @@
 import axios from 'axios'
 const TMBD_API_KEY = "c6560ae79e0bf6e21bb35eb5892ebc25"
 
-export const getLatestMovie = async () => {
-  const outer = axios.get(`https://api.themoviedb.org/3/movie/76341?api_key=${TMBD_API_KEY}`)
-        .then(data => {
-            return data.data;
+export const getTopRatedMovies = async () => {
+    const response = axios.get(`https://api.themoviedb.org/movie/top_rated?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
         })
-    return outer
+    return response
 }
 
+export const getPopularMovies = async () => {
+    const response = axios.get(`https://api.themoviedb.org/movie/popular?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getNowPlaying = async () => {
+    const response = axios.get(`https://api.themoviedb.org/movie/now_playing?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getSimilarMovies = async (movie_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getMovieDetails = async (movie_id) => {
+    const response = axios.get(`https://api.themoviedb.org/movie/${movie_id}/videos?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getMovieReviews = async (movie_id) => {
+    const response = axios.get(`https://api.themoviedb.org/movie/${movie_id}/reviews?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const searchMovie = async (query) => {
+    const response = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${TMBD_API_KEY}&query=${query}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
 /*
 There are 3 ways to search for and find movies, TV shows and people on TMDB.
  /search - Text based search is the most common way. You provide a query string and we provide the closest match. Searching by text takes into account all original, translated, alternative names and titles.

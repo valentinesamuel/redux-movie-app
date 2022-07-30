@@ -25,5 +25,6 @@ export const Auth = styled(Link)`
 `
 
 export const NavbarContainer = styled.div`
-
+display:flex;
+align-items:center;
 `

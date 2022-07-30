@@ -1,6 +1,15 @@
 import axios from 'axios'
 const TMBD_API_KEY = "c6560ae79e0bf6e21bb35eb5892ebc25"
 
+/*=======MOVIES=======*/
+export const discoverMovies = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
 export const getTopRatedMovies = async () => {
     const response = axios.get(`https://api.themoviedb.org/movie/top_rated?api_key=${TMBD_API_KEY}`)
         .then(response => {
@@ -17,7 +26,7 @@ export const getPopularMovies = async () => {
     return response
 }
 
-export const getNowPlaying = async () => {
+export const getNowPlayingMovie = async () => {
     const response = axios.get(`https://api.themoviedb.org/movie/now_playing?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -33,8 +42,32 @@ export const getSimilarMovies = async (movie_id) => {
     return response
 }
 
+export const getMovieImages = async (movie_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/images?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getMovieVideos = async (movie_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
 export const getMovieDetails = async (movie_id) => {
     const response = axios.get(`https://api.themoviedb.org/movie/${movie_id}/videos?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getMovieRecommendation = async (movie_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
         })
@@ -49,6 +82,14 @@ export const getMovieReviews = async (movie_id) => {
     return response
 }
 
+export const getUpcomingMovies = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
 export const searchMovie = async (query) => {
     const response = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${TMBD_API_KEY}&query=${query}`)
         .then(response => {
@@ -56,125 +97,140 @@ export const searchMovie = async (query) => {
         })
     return response
 }
+
+
+/*=======TV_SHOWS=======*/
+export const discoverDetails = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowsDetails = async (tv_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTopRatedTvShows = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getPopularTvShows = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getOnAirTvShows = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTodayOnAirTvShows = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getLatestTvShows = async () => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/latest?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowVideos = async (tv_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/videos?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getSimilarTvShow = async (tv_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/similar?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowReview = async (tv_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/reviews?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowRecommendation = async (tv_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/recommendations?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowSeasonImages = async (tv_id, season_number) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/season/${season_number}/images?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowSeasonVideos = async (tv_id, season_number) => {
+    const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/season/${season_number}/videos?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowEpisodeVideos = async (tv_id, season_number, episode_number) => {
+    const response = axios.get(`https://api.themoviedb.org/3/${tv_id}/season/${season_number}/episode/${episode_number}/videos?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+export const getTvShowEpisodeImages = async (tv_id, season_number, episode_number) => {
+    const response = axios.get(`https://api.themoviedb.org/3/${tv_id}/season/${season_number}/episode/${episode_number}/images?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
+
+
+/*=======MISCELLEANOUS=======*/
+export const getReviewDetail = async (review_id) => {
+    const response = axios.get(`https://api.themoviedb.org/3/review/${review_id}?api_key=${TMBD_API_KEY}`)
+        .then(response => {
+            return response.data;
+        })
+    return response
+}
 /*
-There are 3 ways to search for and find movies, TV shows and people on TMDB.
- /search - Text based search is the most common way. You provide a query string and we provide the closest match. Searching by text takes into account all original, translated, alternative names and titles.
-
-/discover - Sometimes it useful to search for movies and TV shows based on filters or definable values like ratings, certifications or release dates. The discover method make this easy. For some example queries, and to get an idea about the things you can do with discover, take a look here.
-
-/find - The last but still very useful way to find data is with existing external IDs. For example, if you know the IMDB ID of a movie, TV show or person, you can plug that value into this method and we'll return anything that matches. This can be very useful when you have an existing tool and are adding our service to the mix.
-
-process,env.TMBD_API_KEY
-General Features
-Top rated movies
-Upcoming movies
-Now playing movies
-Popular movies
-Popular TV shows
-Top rated TV shows
-On the air TV shows
-Airing today TV shows
-Popular people
-
-Account Features
-Get details
-Get lists (created and marked as favourite)
-Get favourite movie list
-Get movie watch list
-Get rated movie list
-Get the account state for a movie (rated, marked as favourite or on watch list) 
-
-Account Session Features
-Rate a movie
-Add/remove a movie to your favourites
-Add/remove a movie to your watch list
-Guest Session Features (no sign up required)
-Rate a movie
-Get a list of rated movies
-Movie Features
-Search: Search for movies with a text query.
-
-Discover: Search for movies based on data. Movies are queryable by fields like average rating, certifications, release dates and genres.
-
-Find: Find movies based on an external ID like an IMDB ID.
-
-Get details
-
-Primary info
-Alternative titles
-Cast
-Crew
-Images (posters, backdrops)
-Plot keywords
-Release information
-Trailers
-Translations
-Similiar movies
-Reviews
-Belongs to lists
-Changes
-TV Features
-Search: Search for TV shows with a text query.
-
-Discover: Search for TV shows based on data. TV shows are queryable by fields like average rating, air date, TV network and genres.
-
-Find: Find TV shows based on an external ID like an IMDB ID.
-
-Get details
-
-Primary info
-Cast
-Changes
-Crew
-Images (posters, backdrops)
-External IDs
-Translations
-TV Season Features
-Get details
-Primary info
-Cast
-Changes
-Crew
-Images (posters, backdrops)
-External IDs
-TV Episode Features
-Get details
-Primary info
-Cast
-Changes
-Crew
-Images (posters, backdrops)
-External IDs
-Collection Features
-Search
-Get details
-Images (posters, backdrops)
-People Features
-Search: Search for people with a text query.
-
-Find: Find people based on an external ID like an IMDB ID.
-
-Get details
-
-Primary info
-Changes
-Credits (movie, TV and combined)
-Images (profile)
-Tagged images
-Company Features
-Search
-Get details
-Get movies
-List Features
-Search
-Get list movies
-Genre Features
-Get list
-Get movies
-Plot Keyword Features
-Search
-Get details
-Get movies
-Job Features
-Get list
+- companies
+- credits
+- etc
 */

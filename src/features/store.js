@@ -2,13 +2,11 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { PERSIST, persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from './user/userSlice'
-import movieReducer from './movie/movieSlice'
 import userMovieListReducer from "./movie/userMovieList";
 
 
 const rootReducer = combineReducers({
   userSlice: userReducer,
-  movieSlice: movieReducer,
   userMoviesList: userMovieListReducer
 })
 
@@ -30,7 +28,7 @@ export const store = configureStore({
           "userMoviesList",
           "movieSlice"
         ],
-        ignoredPaths: ["userSlice.userData", "movieSlice", "userMoviesList"],
+        ignoredPaths: ["userSlice.userData", "userMoviesList"],
       },
     }),
 });

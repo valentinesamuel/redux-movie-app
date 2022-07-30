@@ -12,11 +12,11 @@ const Navbar = () => {
       <NavLink to="">Pricing</NavLink>
       <NavLink to="">Contact Us</NavLink>
 
-      <Link to='signin'>
-        <Button buttonType={BUTTON_TYPE_CLASSES.red}>
+        <Button isLoading={false} buttonType={BUTTON_TYPE_CLASSES.red}>
+      <Link style={{textDecoration:"none"}} to='signin'>
           Sign In
-      </Button>
       </Link>
+      </Button>
 
     </NavbarContainer>
   );

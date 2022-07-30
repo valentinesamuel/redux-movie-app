@@ -20,9 +20,10 @@ const defaultformFields = {
 const SignIn = () => {
   const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
+ 
 
   const { email, password } = formFields;
-  const registered = false;
+  const registered = false; //use state to manipulate this
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,15 +34,18 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(getCurrentUser(email))
     dispatch(getMovieList(email))
+ //find way to navigate to auth-homepage after login
   };
 
   const loginWithGoogle = async () => {
     dispatch(loginWithGooglePopup());
+
   }
 
   const onLoginWithGithubPopup = async () => {
     dispatch(loginWithGithubPopup());
-}
+
+  }
 
   return (
     <>
@@ -67,7 +71,7 @@ const SignIn = () => {
           />
           <AuthProvider>
             <AuthIcon onClick={loginWithGoogle} src={GoogleIcon} alt="google-sign-in" />
-            <AuthIcon src={GithubIcon} alt="github-sign-in" onClick={onLoginWithGithubPopup}/>
+            <AuthIcon src={GithubIcon} alt="github-sign-in" onClick={onLoginWithGithubPopup} />
           </AuthProvider>
           <SignInButton type="submit" buttonType={BUTTON_TYPE_CLASSES.red}>Sign in</SignInButton>
         </form>

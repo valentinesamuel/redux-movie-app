@@ -28,6 +28,9 @@ export const userMovieListSlice = createSlice({
         },
         removeMovieFromList: (state, action) => {
             state.movieList.filter(movie => movie.id !== action.payload.id)
+        },
+        clearMovieList: (state) => {
+            state.movieList = null;
         }
     },
     extraReducers(builder) {
@@ -36,6 +39,6 @@ export const userMovieListSlice = createSlice({
         })
     }
 })
-export const { addMovieToList, removeMovieFromList } = userMovieListSlice.actions
+export const { addMovieToList, removeMovieFromList, clearMovieList } = userMovieListSlice.actions
 
 export default userMovieListSlice.reducer

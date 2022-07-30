@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { clearMovieList } from "../../features/movie/userMovieList";
 import { logCurrentUserOut } from "../../features/user/userSlice";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { AuthNavabarContainer, UserName } from "./authNavbar.styles";
@@ -12,6 +13,7 @@ const AuthNavbar = () => {
 
   const onLogOut = () => {
     dispatch(logCurrentUserOut());
+    dispatch(clearMovieList())
     navigate("/")
 }
 

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUser, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 
+import { getUser, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 const initialState = {
     userData: null,
     status: "unauth", //'authing' | 'authed' | 'failed' | 'unauth'
@@ -24,8 +24,8 @@ export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () =>
 
 export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
     const response = await signInWithGithubPopup();
-    const {displayName, email} = response.user;
-    const userDetails = {displayName, email}
+    const { displayName, email } = response.user;
+    const userDetails = { displayName, email }
     return userDetails;
 })
 

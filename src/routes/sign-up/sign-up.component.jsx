@@ -1,21 +1,26 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 import Footer from '../../components/footer/footer.component';
 import FormInput from '../../components/form-input/form-input.component';
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utilities/firebase';
+import { getMovieList } from '../../features/movie/userMovieList';
+import { getCurrentUser } from '../../features/user/userSlice';
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
 import { LoginPrompt, SignUpButton, SignUpContainer, SignInLink } from './sign-up.styles';
 
 const defaultFormFields = {
   email: "",
   password: "",
   confirmPassword: "",
-  displayName:""
+  displayName: ""
 };
 
 const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password, confirmPassword, displayName } = formFields;
-  
+  const movieList = useSelector((state) => state.userMovieListSlice.movieList)
+  const dispatch = useDispatch()
+
   const resetFormFields = (event) => {
     setFormFields(defaultFormFields);
   };
@@ -35,8 +40,11 @@ const SignUp = () => {
     try {
       const { user } = await createAuthUserWithEmailAndPassword(email, password);
       await createUserDocumentFromAuth(user, { displayName });
-      
+      await createUserMovieListDocument(user, movieList)
       resetFormFields();
+      dispatch(getCurrentUser(email))
+      // dispatch action to get movielist here
+      
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user. Email already in use")
@@ -60,14 +68,14 @@ const SignUp = () => {
             name="email"
             value={email}
           />
-            <FormInput
-              label="Username"
-              type="text"
-              required
-              onChange={handleChange}
-              name="displayName"
-              value={displayName}
-            />
+          <FormInput
+            label="Username"
+            type="text"
+            required
+            onChange={handleChange}
+            name="displayName"
+            value={displayName}
+          />
           <FormInput
             label="Password"
             type="password"
@@ -86,7 +94,7 @@ const SignUp = () => {
           />
           <SignUpButton disabled={password !== confirmPassword} type="submit" onClick={handleSubmit} buttonType={BUTTON_TYPE_CLASSES.red}>Sign Up</SignUpButton>
         </form>
- 
+
         <LoginPrompt>
           <p>Already have an account?</p>
           <SignInLink to="/signin"> Sign In</SignInLink>

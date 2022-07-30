@@ -69,12 +69,18 @@ export const getUser = async (email) => {
 
 }
 
+export const getUserMovieList = async (email) => {
+  const collectionRef = collection(db, 'movies')
+  const q = query(collectionRef, where("email", "==", email));
+  const querySnapshot = await getDocs(q)
+  return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
+}
+
 export const createUserDocumentFromAuth = async (
   userAuth,
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
-  // const userDocRef = doc(db, 'users', userAuth.uid);
   const userDocRef = doc(db, 'users', userAuth.email);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
@@ -87,6 +93,27 @@ export const createUserDocumentFromAuth = async (
         email,
         createdAt,
         ...additionalInformation,
+      });
+    } catch (error) {
+      console.log("error creating ", error.message);
+    }
+  }
+  return userSnapshot;
+};
+
+export const createUserMovieListDocument = async (
+  userAuth,
+  listOfMovies
+) => {
+  if (!userAuth) return;
+  const userDocRef = doc(db, 'movies', userAuth.email);
+  const userSnapshot = await getDoc(userDocRef);
+  if (!userSnapshot.exists()) {
+    const { email } = userAuth;
+    try {
+      await setDoc(userDocRef, {
+        email,
+        listOfMovies
       });
     } catch (error) {
       console.log("error creating ", error.message);

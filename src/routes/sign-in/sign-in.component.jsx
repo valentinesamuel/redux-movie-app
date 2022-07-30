@@ -9,6 +9,7 @@ import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
 import { useDispatch } from "react-redux";
 import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../../features/user/userSlice";
+import { getMovieList } from "../../features/movie/userMovieList";
 
 
 const defaultformFields = {
@@ -31,6 +32,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(getCurrentUser(email))
+    dispatch(getMovieList(email))
   };
 
   const loginWithGoogle = async () => {

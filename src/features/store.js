@@ -7,12 +7,11 @@ import userMovieListReducer from "./movie/userMovieList";
 
 const rootReducer = combineReducers({
   userSlice: userReducer,
-  userMoviesList: userMovieListReducer
+  userMovieListSlice: userMovieListReducer
 })
 
 const persistConfig = {
   key: 'root',
-
   storage
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);

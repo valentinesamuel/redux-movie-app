@@ -5,7 +5,7 @@ const AuthHome = () => {
   return (
     <AuthHomeContainer>
       <Header></Header>
- </AuthHomeContainer>
+    </AuthHomeContainer>
   )
 }
 

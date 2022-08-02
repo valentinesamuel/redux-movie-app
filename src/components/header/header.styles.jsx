@@ -5,7 +5,7 @@ import { COLORS, FONTSIZES } from "../../utilities/designTokens";
 export const HeaderContainer = styled.div`
 background-color: ${COLORS.black};
 position:relative;
-padding:5rem 0 0 0;
+padding:5rem 0 0 4%;
 height:100%;
 `
 
@@ -33,7 +33,7 @@ margin: 1.8rem 0 1.8rem 0;
 
 export const Description = styled.p`
 font-size:1.5rem;
-width:40rem;
+width:50%;
 line-height:2rem;
 `
 

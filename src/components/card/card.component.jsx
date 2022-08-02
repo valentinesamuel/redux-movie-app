@@ -14,10 +14,10 @@ const Card = () => {
         </MovieTitle>
         <Stats>
           <Rating>
-            <img src={starIcon} alt="star" />
+            <img loading='lazy' src={starIcon} alt="star" />
 <p>9.5 / 10</p>
           </Rating>
-               <Add src={addIcon} alt='add'></Add>
+               <Add loading='lazy' src={addIcon} alt='add'></Add>
         </Stats>
         <Description>
           <p>

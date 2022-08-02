@@ -32,7 +32,6 @@ export const Details = styled.div`
 export const Stats = styled.div`
 display:flex;
 justify-content:space-between;
-padding-top:1rem;
 `
 
 export const Rating = styled.div`
@@ -54,7 +53,6 @@ text-overflow: ellipsis;
 `
 
 export const Description = styled.div`
-padding-top:1.2rem;
 
 p{ 
     line-height:1.5rem;

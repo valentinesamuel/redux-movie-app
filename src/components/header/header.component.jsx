@@ -3,6 +3,7 @@ import { HeaderContainer, ButtonContainer, Description, GenreContainer, StatsCon
 import Star from "../../assets/icons/star.svg"
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component"
 
+
 const Header = () => {
     return (
         <HeaderContainer>
@@ -37,13 +38,16 @@ const Header = () => {
             </StatsContainer>
 
             <ButtonContainer>
-                <Button buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
+                <Button className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
                 <Button buttonType={BUTTON_TYPE_CLASSES.white} >Add To List</Button>
             </ButtonContainer>
 
             <PictureSlides>
-                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200" alt="movie" className='image' />
-                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?" alt="movie" className='image' />
+                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
+                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
+                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
+                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
+                <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
             </PictureSlides>
 
         </HeaderContainer>

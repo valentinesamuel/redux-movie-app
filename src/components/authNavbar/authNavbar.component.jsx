@@ -2,14 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearMovieList } from "../../features/movie/userMovieList";
 import { logCurrentUserOut } from "../../features/user/userSlice";
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import { AuthNavabarContainer, UserName } from "./authNavbar.styles";
+import { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { AuthNavabarContainer, UserName, SignOutButton } from "./authNavbar.styles";
 
 const AuthNavbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const username = useSelector((state) => state.userSlice.userData.displayName)
+  const auth = useSelector((state) => state.userSlice)
 
   const onLogOut = () => {
     dispatch(logCurrentUserOut());
@@ -18,12 +18,12 @@ const AuthNavbar = () => {
 }
 
   return (
-    <div>
+    <div> 
       <AuthNavabarContainer>
-        <UserName>{username}</UserName>
-        <Button onClick={onLogOut} buttonType={BUTTON_TYPE_CLASSES.red}>
+       {auth.status === "authed" && <UserName>{auth.userData.displayName}</UserName>}
+        <SignOutButton onClick={onLogOut} buttonType={BUTTON_TYPE_CLASSES.red}>
           Sign Out
-        </Button>
+        </SignOutButton>
       </AuthNavabarContainer>
     </div>
   )

@@ -19,19 +19,22 @@ background-image: linear-gradient(
       background-size: cover;
       `;
       
-      export const HeaderText = styled.h1`
+  export const HeaderText = styled.h1`
   font-size: ${FONTSIZES.h1};
   padding-bottom: 1.25rem;
   max-width: 50%;
+  background-color:transparent;
 
 `;
 
 export const RedText = styled.span`
   color: ${COLORS.red};
+   background-color: transparent;
 `;
 
 export const HeaderBody = styled.p`
   margin-bottom: 3.125rem;
+  background-color:transparent;
 `;
 
 export const CtaButton = styled(Button)`
@@ -42,12 +45,15 @@ export const CtaButton = styled(Button)`
 export const WatchSection = styled.section`
   padding: 5% 4%;
   color:white;
+  background-color:white;
 `;
 
 export const WatchText = styled.h2`
   color: ${COLORS.black};
   font-size: ${FONTSIZES.h3};
   width: 35%;
+    background-color:white;
+
 
   @media only screen and (max-width: 30rem) {
     width: 100%;
@@ -59,6 +65,7 @@ export const WatchText = styled.h2`
 
 export const WatchActionsContainer = styled.div`
   display: flex;
+    background-color:white;
   justify-content: space-between;
 
   @media only screen and (max-width: 30rem) {
@@ -71,12 +78,16 @@ export const WatchActionsContainer = styled.div`
 export const WatchAction = styled.div`
   text-align: center;
   width: 15%;
+    background-color:white;
+
   padding: 5% 0 0 0;
 
   p,
   h2 {
     color: ${COLORS.black};
     margin-top: 6%;
+      background-color:white;
+
     line-height: 1.3125rem;
   }
 
@@ -88,4 +99,5 @@ export const WatchAction = styled.div`
 
 export const Icon = styled.div`
   height: 30px;
+  background-color:transparent;
 `;

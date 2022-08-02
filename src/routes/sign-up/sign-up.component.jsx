@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
-import Footer from '../../components/footer/footer.component';
 import FormInput from '../../components/form-input/form-input.component';
 import { getCurrentUser } from '../../features/user/userSlice';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
@@ -102,7 +101,6 @@ const SignUp = () => {
           <SignInLink to="/signin"> Sign In</SignInLink>
         </LoginPrompt>
       </SignUpContainer>
-      <Footer />
     </>
   )
 }

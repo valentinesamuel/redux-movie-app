@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS, FONTWEIGHT } from "../../utilities/designTokens";
+import { FONTWEIGHT } from "../../utilities/designTokens";
 
 export const FooterContainer = styled.footer`
-  background-color: ${COLORS.black};
   display: flex;
   padding: 6% 7%;
   width:100%;

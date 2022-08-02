@@ -4,7 +4,6 @@ import FormInput from "../../components/form-input/form-input.component";
 import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
 
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
-import Footer from "../../components/footer/footer.component";
 import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
@@ -89,7 +88,6 @@ const SignIn = () => {
           <SignUpLink to="/signup"> Sign Up</SignUpLink>
         </RegisterationPrompt>
       </SignInContainer>
-      <Footer />
     </>
   );
 };

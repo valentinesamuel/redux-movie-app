@@ -4,20 +4,25 @@ import { BORDERRADIUS, COLORS, DURATION, FONT } from "../../utilities/designToke
 export const BaseButton = styled.button`
 text-transform: uppercase;
   color: ${COLORS.white};
-  padding: 0.2em 1.5em 0.2em 1.5em;
+  padding: 1rem 2rem;
+  
   font-family: "${FONT.poppins}";
   transition: ${DURATION.point3}s;
   border-radius: ${BORDERRADIUS.fivepixel};
   border: none;
   cursor: pointer;
-  font-size: 1em;
-  line-height: 3em;
+  font-size: 1rem;
 
   :hover{
 transform: rotate(2deg);
 }
 
- 
+ @media only screen and (max-width: 30rem) {
+    padding: .5rem .9rem;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `;
 
 export const RedButton = styled(BaseButton)`

@@ -13,7 +13,7 @@ const Navbar = () => {
       <NavLink to="">Contact Us</NavLink>
 
       <Link style={{textDecoration:"none"}} to='signin'>
-        <Button isLoading={false} buttonType={BUTTON_TYPE_CLASSES.red}>
+        <Button buttonType={BUTTON_TYPE_CLASSES.red}>
           Sign In
       </Button>
       </Link>

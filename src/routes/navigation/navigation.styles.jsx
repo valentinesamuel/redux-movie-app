@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { COLORS, FONT, FONTWEIGHT, } from "../../utilities/designTokens";
 
 export const Nav = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-height:100vh
+
+
 `
 
 
@@ -15,7 +13,15 @@ export const LogoLink = styled(Link)`
   text-decoration: none;
   font-family: "${FONT.oswald}";
   text-transform: uppercase;
-  color: ${COLORS.red}
+  color: ${COLORS.red};
+  
+  @media only screen and (max-width: 30rem) {
+     font-size: 2rem;
+   
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `;
 
 
@@ -25,8 +31,8 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   padding: 0 4%;
   width: 100%;
-  background: ${COLORS.matteBlack};
-  height:auto;
+
+
 `;
 
 export const NavLink = styled(Link)`

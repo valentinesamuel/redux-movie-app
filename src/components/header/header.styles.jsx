@@ -3,10 +3,17 @@ import { COLORS, FONTSIZES } from "../../utilities/designTokens";
 
 
 export const HeaderContainer = styled.div`
-background-color: ${COLORS.black};
+ background: transparent;
 position:relative;
-padding:5rem 0 0 4%;
+padding:5% 0 0 4%;
 height:100%;
+
+  @media only screen and (max-width: 30rem) {
+   
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const AdultContent = styled.div`
@@ -18,28 +25,57 @@ position:absolute;
 top:10%;
 right:0;
 font-size : ${FONTSIZES.h5};
+
+ @media only screen and (max-width: 30rem) {
+padding:2%;
+top:3%;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const Tagline = styled.p`
 width:30%;
 border-left:4px solid ${COLORS.red};
 padding-left: 1.25rem;
+
+ @media only screen and (max-width: 30rem) {
+width:40%;
+line-height:1.4rem;
+}
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const Title = styled.h1`
 font-size:4rem;
 margin: 1.8rem 0 1.8rem 0;
+  @media only screen and (max-width: 30rem) {
+ font-size:2rem;
+margin: 3rem 0 1rem 0;  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const Description = styled.p`
 font-size:1.5rem;
 width:50%;
 line-height:2rem;
+
+  @media only screen and (max-width: 30rem) {
+width:100%;
+font-size:1.2rem;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const GenreContainer = styled.div`
 display:flex;
-
 p{
     margin:3rem 2rem 0 0;
 }
@@ -54,8 +90,12 @@ margin:0 2% 0 0;
 
 .divider{
 width:.3%;
-background-color:red;
 margin:0 2% 0 0;
+background-color:red;
+  @media only screen and (max-width: 30rem) {
+width:.5%;
+margin:0 3% 0 2%;
+  }
 }
 
 .star{
@@ -63,6 +103,12 @@ margin:0 2% 0 0;
     width:1%;
     object-fit:contain;
     margin:0 .5% 0 0;
+  @media only screen and (max-width: 30rem) {
+   height:4%;
+    width:4%;
+        margin:0 .8% 0 0;
+  }
+    
 }
 
 .rating{
@@ -75,15 +121,43 @@ display:flex;
 width:30%;
 justify-content:space-between;
 margin: 2.5rem 0 0 0;
+
+
+@media only screen and (max-width: 30rem) {
+    width:100%;
+    justify-content:flex-start;
+    .leftbtn{
+    margin-right:2.2rem;
+    }
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const PictureSlides = styled.div`
-
+flex-wrap: no-wrap;
+display:flex;
 .image{
     width:10%;
     height:auto;
     object-fit:contain;
     border-radius:5px;
     margin: 6rem 4rem 1rem 0;
+
+    @media only screen and (max-width: 30rem) {
+        margin: 3rem 1rem 1rem 0;
+            width:90%;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 }
+  @media only screen and (max-width: 30rem) {
+    display:flex;
+    overflow-x:scroll;
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `

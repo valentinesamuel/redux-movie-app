@@ -1,8 +1,11 @@
-import React from 'react'
+import Header from "../header/header.component";
+import { AuthHomeContainer } from "./authHome.styles";
 
 const AuthHome = () => {
   return (
-    <div>Fetch movies herefro home page</div>
+    <AuthHomeContainer>
+      <Header></Header>
+ </AuthHomeContainer>
   )
 }
 

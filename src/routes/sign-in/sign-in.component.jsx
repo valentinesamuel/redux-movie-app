@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../../components/form-input/form-input.component";
 import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
 
@@ -20,7 +21,7 @@ const defaultformFields = {
 const SignIn = () => {
   const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
- 
+  const navigate = useNavigate();
 
   const { email, password } = formFields;
   const registered = false; //use state to manipulate this
@@ -35,6 +36,7 @@ const SignIn = () => {
     dispatch(getCurrentUser(email))
     dispatch(getMovieList(email))
  //find way to navigate to auth-homepage after login
+    navigate("/");
   };
 
   const loginWithGoogle = async () => {

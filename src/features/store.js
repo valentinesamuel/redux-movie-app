@@ -3,11 +3,13 @@ import { PERSIST, persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from './user/userSlice'
 import userMovieListReducer from "./movie/userMovieList";
+import movieListReducer from "./movie/moviesList"
 
 
 const rootReducer = combineReducers({
   userSlice: userReducer,
-  userMovieListSlice: userMovieListReducer
+  userMovieListSlice: userMovieListReducer,
+  movieListSlice: movieListReducer
 })
 
 const persistConfig = {
@@ -25,7 +27,7 @@ export const store = configureStore({
           PERSIST,
           "userData/loginWithGooglePopup/fulfilled",
           "userMoviesList",
-          "movieSlice"
+          "userData/getCurrentUser/fulfilled"
         ],
         ignoredPaths: ["userSlice.userData", "userMoviesList"],
       },

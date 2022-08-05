@@ -6,7 +6,7 @@ export const HeaderContainer = styled.div`
 position:relative;
 padding:5% 0 2% 4%;
 height:100%;
-background-image:${({ imageUrl }) => `url(${imageUrl})`};
+background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)),${({ imageUrl }) => `url(${imageUrl})`};
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;

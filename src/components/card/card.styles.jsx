@@ -5,6 +5,8 @@ position:relative;
 margin: 0 7% 0 0;
 border-radius:5px;
 min-width:15rem;
+padding: 10px;
+box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {
    min-width:12rem;
@@ -46,7 +48,7 @@ img{
 `
 
 export const MovieTitle = styled.h4`
-font-size:2rem;
+font-size:1.5rem;
     overflow: hidden;
       white-space: nowrap;
 text-overflow: ellipsis;

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const TMBD_API_KEY = "c6560ae79e0bf6e21bb35eb5892ebc25"
+const TMBD_API_KEY = "d93de582597225ca43bf22d8465a9e19"
 
 /*=======MOVIES=======*/
 export const discoverMovies = async () => {
@@ -10,6 +10,7 @@ export const discoverMovies = async () => {
     return response
 }
 
+
 export const getTopRatedMovies = async () => {
     const response = axios.get(`https://api.themoviedb.org/movie/top_rated?api_key=${TMBD_API_KEY}`)
         .then(response => {
@@ -19,7 +20,7 @@ export const getTopRatedMovies = async () => {
 }
 
 export const getPopularMovies = async () => {
-    const response = axios.get(`https://api.themoviedb.org/movie/popular?api_key=${TMBD_API_KEY}`)
+    const response = axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
         })
@@ -27,7 +28,7 @@ export const getPopularMovies = async () => {
 }
 
 export const getNowPlayingMovie = async () => {
-    const response = axios.get(`https://api.themoviedb.org/movie/now_playing?api_key=${TMBD_API_KEY}`)
+    const response = axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
         })

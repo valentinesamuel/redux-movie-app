@@ -1,22 +1,14 @@
 import Card from '../card/card.component'
 import { MovieRowContainer } from './Movierow.styles'
 
-const MovieRow = () => {
+const MovieRow = ({ moviesList }) => {
+
     return (
         <MovieRowContainer>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {moviesList.map(movie => {
+                return <Card key={movie.id} movie={movie} />
+            })}
+
         </MovieRowContainer>
     )
 }

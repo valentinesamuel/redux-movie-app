@@ -12,3 +12,12 @@ h2{
  padding: 3rem 0 1.2rem 0;
 }
 `
+
+export const MovieRowContainer = styled.div`
+display:flex;
+overflow-x: scroll;
+
+&::-webkit-scrollbar {
+  display: none;
+}
+`

@@ -10,6 +10,7 @@ import GithubIcon from '../../assets/icons/github.svg';
 import { useDispatch } from "react-redux";
 import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../../features/user/userSlice";
 import { getMovieList } from "../../features/movie/userMovieList";
+import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies } from "../../features/movie/moviesList";
 
 
 const defaultformFields = {
@@ -34,6 +35,9 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(getCurrentUser(email))
     dispatch(getMovieList(email))
+    dispatch(storeGetPopularMovies())
+    dispatch(storeGetTopRatedMovies())
+    dispatch(storeGetNowPlayingMovies())
  //find way to navigate to auth-homepage after login
     navigate("/");
   };

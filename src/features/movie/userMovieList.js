@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, } from "@reduxjs/toolkit";
 import { getUserMovieList } from "../../utilities/firebase"
 
 const initialState = {
-    movieList: null,
+    movieList: [],
 }
 
 export const getMovieList = createAsyncThunk("movieList/getUserMovieList", async (email) => {

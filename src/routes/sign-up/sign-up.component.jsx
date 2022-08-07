@@ -7,6 +7,7 @@ import FormInput from '../../components/form-input/form-input.component';
 import { getCurrentUser } from '../../features/user/userSlice';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
 import { LoginPrompt, SignUpButton, SignUpContainer, SignInLink } from './sign-up.styles';
+import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies } from '../../features/movie/moviesList';
 
 const defaultFormFields = {
   email: "",
@@ -45,6 +46,9 @@ const SignUp = () => {
       resetFormFields();
       dispatch(getCurrentUser(email))
       // dispatch action to get movielist here
+      dispatch(storeGetPopularMovies())
+      dispatch(storeGetTopRatedMovies())
+      dispatch(storeGetNowPlayingMovies())
       navigate("/")
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

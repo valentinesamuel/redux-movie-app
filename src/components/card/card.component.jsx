@@ -2,11 +2,15 @@ import React from 'react'
 import { CardContainer, Details, Add, MovieImage, Rating, MovieTitle, Stats, Description } from './card.styles'
 import addIcon from  '../../assets/icons/add.svg'
 import starIcon from '../../assets/icons/star.svg';
+import { useDispatch } from 'react-redux';
+import { addMovieToList } from '../../features/movie/userMovieList';
 
 const Card = ({ movie }) => {
+  const dispatch = useDispatch()
 
   const addToUserMovieList = (movieId, movie) => {
-    console.log("add to "+ movieId + " list here", movie)
+    // console.log("add to " + movieId + " list here", movie)
+    dispatch(addMovieToList(movie))
   }
 
   return (

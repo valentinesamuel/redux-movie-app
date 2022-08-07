@@ -11,9 +11,7 @@ const Feed = () => {
     const nowPlayingMovies = useSelector(state => state.movieListSlice.movies.nowPlayingMovies.results)
 
     useEffect(() => {
-        dispatch(storeGetPopularMovies()) 
-        dispatch(storeGetTopRatedMovies()) 
-        dispatch(storeGetNowPlayingMovies())
+      
     }, [dispatch])
     return (
         <FeedContainer>

@@ -25,7 +25,7 @@ export const Add = styled.img`
 background-color:red;
 border-radius:50%;
 padding:7%;
-
+cursor:pointer;
 `
 
 export const Details = styled.div`

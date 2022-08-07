@@ -12,7 +12,7 @@ export const discoverMovies = async () => {
 
 
 export const getTopRatedMovies = async () => {
-    const response = axios.get(`https://api.themoviedb.org/movie/top_rated?api_key=${TMBD_API_KEY}`)
+    const response = axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
         })

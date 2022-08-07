@@ -10,7 +10,7 @@ import GithubIcon from '../../assets/icons/github.svg';
 import { useDispatch } from "react-redux";
 import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../../features/user/userSlice";
 import { getMovieList } from "../../features/movie/userMovieList";
-import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies } from "../../features/movie/moviesList";
+import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from "../../features/movie/moviesList";
 
 
 const defaultformFields = {
@@ -38,6 +38,7 @@ const SignIn = () => {
     dispatch(storeGetPopularMovies())
     dispatch(storeGetTopRatedMovies())
     dispatch(storeGetNowPlayingMovies())
+    dispatch(storeGetUpcomingMovies())
  //find way to navigate to auth-homepage after login
     navigate("/");
   };

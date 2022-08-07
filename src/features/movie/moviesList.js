@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getNowPlayingMovie, getPopularMovies, getTopRatedMovies } from "../../utilities/tmdb";
+import { getNowPlayingMovie, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from "../../utilities/tmdb";
 
 const initialState = {
     movies: {
         popularMovies: [],
         topRatedMovies: [],
-        nowPlayingMovies:[],
+        nowPlayingMovies: [],
+        upcomingMovies: [],
     }
 }
 
@@ -24,7 +25,10 @@ export const storeGetNowPlayingMovies = createAsyncThunk("movieList/getNowPlayin
     return (response)
 })
 
-
+export const storeGetUpcomingMovies = createAsyncThunk("movieList/getUpcomingMovies", async () => {
+    const response = await getUpcomingMovies()
+    return (response)
+})
 
 export const movieListSlice = createSlice({
     name:'movieList',
@@ -37,6 +41,8 @@ export const movieListSlice = createSlice({
             state.movies.topRatedMovies = action.payload
         }).addCase(storeGetNowPlayingMovies.fulfilled, (state, action) => {
             state.movies.nowPlayingMovies = action.payload
+        }).addCase(storeGetUpcomingMovies.fulfilled, (state, action) => {
+            state.movies.upcomingMovies = action.payload
         })
     }
 })

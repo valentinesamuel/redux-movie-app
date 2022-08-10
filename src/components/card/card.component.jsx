@@ -15,7 +15,7 @@ const Card = ({ movie }) => {
 
   return (
     <CardContainer>
-      <MovieImage alt='movie-poster' loading='lazy' src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
+      <MovieImage alt='movie-poster' loading='lazy' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
       <Details>
         <MovieTitle>
         {movie.title}

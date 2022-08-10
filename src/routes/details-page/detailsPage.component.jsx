@@ -1,38 +1,59 @@
+import { useParams } from "react-router-dom"
 import Button, { BUTTON_TYPE_CLASSES } from "../../components/button/button.component"
 import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title } from "./detailsPage.styles"
 import Star from "../../assets/icons/star.svg"
+import { useEffect, useState } from "react"
+import { getMovieDetails } from "../../utilities/tmdb"
 
 const DetailsPage = () => {
-  return (
-    <DetailsContainer imageUrl={`3`}>
-      <Tagline>
-       fqwefqwef
-      </Tagline>
+  const { movieId } = useParams()
+  const [detailMovie, setDetailMovie] = useState({})
 
-       <AdultContent>
-        Adult Content
-      </AdultContent>
+  useEffect(() => {
+    let isApiSubscribed = true
+    const getMovieDetail = async (id) => {
+      const res = await getMovieDetails(id)
+      if (isApiSubscribed) {
+        setDetailMovie(res)
+        console.log("fetch");
+      }
+    }
+
+    getMovieDetail(movieId)
+
+    return () => {
+      isApiSubscribed = false
+    }
+  }, [movieId])
+  console.log(detailMovie)
+
+
+  return (
+    <DetailsContainer imageUrl={`https://image.tmdb.org/t/p/original${detailMovie.backdrop_path}`}>
+      {detailMovie.tagline && <Tagline>
+        {detailMovie.tagline}
+      </Tagline>}
+
+      {detailMovie.adult && <AdultContent>
+      </AdultContent>}
 
       <Title>
-   fhdrth
+        {detailMovie.title}
       </Title>
 
       <Description>
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem voluptatibus rerum ipsam?
-      </Description>
+        { detailMovie.overview}      </Description>
 
       <GenreContainer>
-        {/* <p>Drama</p>
-                    <p>Drama</p>
-                    <p>Drama</p> */}
+        {/* {detailMovie.genres.map((name) => (<p key={name.id}>{name.name}</p>))} */}
       </GenreContainer>
 
       <StatsContainer>
-        <p className='year'>2021</p>
+        <p className='year'>{detailMovie.release_date}</p>
         <div className='divider'></div>
         <img src={Star} className="star" alt="star" />
-        <p className='rating'>52752</p>
-        <p className="votes">27527votes</p>
+        <p className='rating'>{detailMovie.vote_average}</p>
+        <p className="votes">{detailMovie.vote_count} votes</p>
       </StatsContainer>
 
       <ButtonContainer>

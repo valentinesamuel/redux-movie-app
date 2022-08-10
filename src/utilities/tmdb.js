@@ -60,7 +60,7 @@ export const getMovieVideos = async (movie_id) => {
 }
 
 export const getMovieDetails = async (movie_id) => {
-    const response = axios.get(`https://api.themoviedb.org/movie/${movie_id}/videos?api_key=${TMBD_API_KEY}`)
+    const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
         })

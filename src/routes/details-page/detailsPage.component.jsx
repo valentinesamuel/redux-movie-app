@@ -88,10 +88,10 @@ const DetailsPage = () => {
         <h2>Cast</h2>
         <PeopleRow people={movieCredit.cast}/>
       </Category>
-      {/* <Category>
+      <Category>
         <h2>Crew</h2>
         <PeopleRow people={movieCredit.crew}/>
-      </Category> */}
+      </Category>
       <Category>
         <h2>Similar to {detailMovie.title}</h2>
         <MovieRow moviesList={similarMovies} />

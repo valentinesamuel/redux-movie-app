@@ -31,5 +31,9 @@ display: -webkit-box;
 p{
 color: ${COLORS.red};
 font-size:1.2rem;
+display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 `

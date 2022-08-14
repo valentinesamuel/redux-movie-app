@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FONTWEIGHT } from "../../utilities/designTokens";
 
 export const CardContainer = styled.div`
 position:relative;
-margin: 0 7% 0 0;
-border-radius:5px;
 min-width:15rem;
-padding: 10px;
+margin: 0 4% 0 0;
+border-radius:5px;
+padding: 2%;
 box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {
@@ -19,6 +21,7 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
 export const MovieImage = styled.img`
 width:100%;
+border-radius:5px;
 object-fit:contain;
 `
 export const Add = styled.img`
@@ -47,11 +50,16 @@ img{
 }
 `
 
-export const MovieTitle = styled.h4`
+export const MovieTitle = styled(Link)`
 font-size:1.5rem;
+
+display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-      white-space: nowrap;
-text-overflow: ellipsis;
+text-decoration:none;
+margin:1% 0;
+    font-weight: ${FONTWEIGHT.semiBold};
 `
 
 export const Description = styled.div`

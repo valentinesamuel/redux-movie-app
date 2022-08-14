@@ -8,8 +8,7 @@ import { addMovieToList } from '../../features/movie/userMovieList';
 const Card = ({ movie }) => {
   const dispatch = useDispatch()
 
-  const addToUserMovieList = (movieId, movie) => {
-    // console.log("add to " + movieId + " list here", movie)
+  const addToUserMovieList = ( movie) => {
     dispatch(addMovieToList(movie))
   }
 
@@ -17,7 +16,7 @@ const Card = ({ movie }) => {
     <CardContainer>
       <MovieImage alt='movie-poster' loading='lazy' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
       <Details>
-        <MovieTitle>
+        <MovieTitle to={`${movie.id}`}>
         {movie.title}
         </MovieTitle>
         <Stats>

@@ -3,7 +3,7 @@ import Button, { BUTTON_TYPE_CLASSES } from "../../components/button/button.comp
 import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title, Category } from "./detailsPage.styles"
 import Star from "../../assets/icons/star.svg"
 import { useEffect, useState } from "react"
-import { getMovieCredits, getMovieDetails, getMovieRecommendation, getSimilarMovies } from "../../utilities/tmdb"
+import { getMovieCredits, getMovieDetails, getMovieRecommendation, getMovieReviews, getSimilarMovies } from "../../utilities/tmdb"
 import MovieRow from "../../components/MovieRow/Movierow.component"
 import PeopleRow from "../../components/people-row/PeopleRow.component"
 
@@ -14,6 +14,7 @@ const DetailsPage = () => {
   const [recommendedMovies, setRecommendedMovies] = useState([])
   const [similarMovies, setSimilarMovies] = useState([])
   const [movieCredit, setMovieCredit] = useState({})
+  const [movieReview, setMovieReviews] = useState([])
 
   useEffect(() => {
     let isApiSubscribed = true
@@ -22,12 +23,15 @@ const DetailsPage = () => {
       const recommendedRes = await getMovieRecommendation(id)
       const similarRes = await getSimilarMovies(id)
       const movieCreditRes = await getMovieCredits(id)
+      const movieReviewRes = await getMovieReviews(id)
+
 
       if (isApiSubscribed) {
         setDetailMovie(res)
         setMovieCredit(movieCreditRes)
         setRecommendedMovies(recommendedRes.results)
         setSimilarMovies(similarRes.results)
+        setMovieReviews(movieReviewRes.results)
         console.log("fetch");
       }
     }
@@ -39,7 +43,7 @@ const DetailsPage = () => {
     }
   }, [movieId])
 
-// console.log(movieCredit.cast);
+  console.log(movieReview);
 
   return (
     <>
@@ -86,11 +90,11 @@ const DetailsPage = () => {
       </DetailsContainer>
       <Category>
         <h2>Cast</h2>
-        <PeopleRow people={movieCredit.cast}/>
+        <PeopleRow people={movieCredit.cast} />
       </Category>
       <Category>
         <h2>Crew</h2>
-        <PeopleRow people={movieCredit.crew}/>
+        <PeopleRow people={movieCredit.crew} />
       </Category>
       <Category>
         <h2>Similar to {detailMovie.title}</h2>

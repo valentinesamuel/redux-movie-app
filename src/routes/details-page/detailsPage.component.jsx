@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import Button, { BUTTON_TYPE_CLASSES } from "../../components/button/button.component"
-import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title, Category } from "./detailsPage.styles"
+import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title, Category, OutlineTitle } from "./detailsPage.styles"
 import Star from "../../assets/icons/star.svg"
 import { useEffect, useState } from "react"
 import { getMovieCredits, getMovieDetails, getMovieRecommendation, getMovieReviews, getSimilarMovies } from "../../utilities/tmdb"
@@ -56,6 +56,10 @@ const DetailsPage = () => {
         {detailMovie.adult && <AdultContent>
         </AdultContent>}
 
+        <OutlineTitle>
+          {detailMovie.title}
+        </OutlineTitle>
+
         <Title>
           {detailMovie.title}
         </Title>
@@ -64,7 +68,7 @@ const DetailsPage = () => {
           {detailMovie.overview}      </Description>
 
         <GenreContainer>
-          {/* {detailMovie.genres.map((name) => (<p key={name.id}>{name.name}</p>))} */}
+          {detailMovie.genres && detailMovie.genres.map((name) => (<p key={name.id}>{name.name}</p>))}
         </GenreContainer>
 
         <StatsContainer>

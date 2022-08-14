@@ -54,6 +54,24 @@ line-height:1.4rem;
   }
 `
 
+export const OutlineTitle = styled.h1`
+background:transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .5px;
+  font-size:12rem;
+  position absolute;
+  opacity:0.2;
+top:0;
+right:0;
+   @media only screen and (max-width: 30rem) {
+display:none;
+}
+
+@media only screen and (max-width: 50rem) {
+    display:none;
+  }
+`
+
 export const Title = styled.h1`
 font-size:4rem;
 background: transparent;

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { getMovieCredits, getMovieDetails, getMovieRecommendation, getMovieReviews, getSimilarMovies } from "../../utilities/tmdb"
 import MovieRow from "../../components/MovieRow/Movierow.component"
 import PeopleRow from "../../components/people-row/PeopleRow.component"
+import ReviewRow from "../../components/review-row/Review-row.component"
 
 
 const DetailsPage = () => {
@@ -95,6 +96,10 @@ const DetailsPage = () => {
       <Category>
         <h2>Crew</h2>
         <PeopleRow people={movieCredit.crew} />
+      </Category>
+      <Category>
+        <h2>Reviews</h2>
+        <ReviewRow reviews={movieReview} />
       </Category>
       <Category>
         <h2>Similar to {detailMovie.title}</h2>

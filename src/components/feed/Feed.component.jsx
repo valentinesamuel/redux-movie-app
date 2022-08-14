@@ -33,7 +33,7 @@ const Feed = () => {
                 <MovieRow moviesList={nowPlayingMovies} />
             </Category>
             <Category>
-                <h2>UpComing</h2>
+                <h2>Upcoming</h2>
                 <MovieRow moviesList={upcomingMovies} />
             </Category>
         </FeedContainer>

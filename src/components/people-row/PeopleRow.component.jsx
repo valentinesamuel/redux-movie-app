@@ -5,7 +5,7 @@ const PeopleRow = ({ people }) => {
     console.log(people)
     return (
         <PeopleRowContainer>
-            {people.map(person => {
+            {people && people.map(person => {
                 return <PersonCard key={person.name} person={person} />
             })}
         </PeopleRowContainer>

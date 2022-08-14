@@ -7,12 +7,13 @@ import { getMovieCredits, getMovieDetails, getMovieRecommendation, getSimilarMov
 import MovieRow from "../../components/MovieRow/Movierow.component"
 import PeopleRow from "../../components/people-row/PeopleRow.component"
 
+
 const DetailsPage = () => {
   const { movieId } = useParams()
   const [detailMovie, setDetailMovie] = useState({})
   const [recommendedMovies, setRecommendedMovies] = useState([])
   const [similarMovies, setSimilarMovies] = useState([])
-  const [movieCredit, setMovieCredit] = useState()
+  const [movieCredit, setMovieCredit] = useState({})
 
   useEffect(() => {
     let isApiSubscribed = true
@@ -24,21 +25,22 @@ const DetailsPage = () => {
 
       if (isApiSubscribed) {
         setDetailMovie(res)
+        setMovieCredit(movieCreditRes)
         setRecommendedMovies(recommendedRes.results)
         setSimilarMovies(similarRes.results)
-        setMovieCredit(movieCreditRes)
         console.log("fetch");
       }
     }
-    
+
     getDetails(movieId)
 
     return () => {
       isApiSubscribed = false
     }
   }, [movieId])
-  
-  console.log(movieCredit)
+
+// console.log(movieCredit.cast);
+
   return (
     <>
       <DetailsContainer imageUrl={`https://image.tmdb.org/t/p/original${detailMovie.backdrop_path}`}>
@@ -84,7 +86,7 @@ const DetailsPage = () => {
       </DetailsContainer>
       <Category>
         <h2>Cast</h2>
-        {/* <PeopleRow  people={movieCredit}/> */}
+        <PeopleRow people={movieCredit.cast}/>
       </Category>
       {/* <Category>
         <h2>Crew</h2>

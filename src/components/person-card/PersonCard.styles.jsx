@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../utilities/designTokens";
+import { COLORS, FONT, FONTSIZES, FONTWEIGHT } from "../../utilities/designTokens";
 
 export const PersonCardContainer = styled.div`
 min-width:10rem;
@@ -18,14 +18,18 @@ border-radius:5px;
 
 export const Description = styled.div`
 h4{
-    margin-top:.6rem;
+    margin:.6rem 0;
 display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    fons-size:1.4rem;
+    font-weight:${FONTWEIGHT.semiBold};
+    line-height:1.6rem;
 }
 
 p{
 color: ${COLORS.red};
+font-size:1.2rem;
 }
 `

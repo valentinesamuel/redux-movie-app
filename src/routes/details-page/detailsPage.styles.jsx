@@ -186,7 +186,7 @@ background: transparent;
 export const Category = styled.div`
 h2{
  font-size: ${FONTSIZES.h2};
- padding: 3rem 0 1.2rem 2%;
-
+ padding: 3rem 0 1.2rem 0;
 }
+margin-left:2%;
 `

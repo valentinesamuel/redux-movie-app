@@ -1,23 +1,33 @@
-import React from 'react'
 import { CardContainer, Details, Add, MovieImage, Rating, MovieTitle, Stats, Description } from './card.styles'
-import addIcon from  '../../assets/icons/add.svg'
+import addIcon from '../../assets/icons/add.svg'
 import starIcon from '../../assets/icons/star.svg';
 import { useDispatch } from 'react-redux';
 import { addMovieToList } from '../../features/movie/userMovieList';
 
+
 const Card = ({ movie }) => {
   const dispatch = useDispatch()
 
-  const addToUserMovieList = ( movie) => {
+  const addToUserMovieList = (movie) => {
     dispatch(addMovieToList(movie))
+  }
+
+  const goToMovie = (movie_id) => {
+    // if (location) {
+    //   let tmp = location.pathname.slice(location.pathname.lastIndexOf("/"), location.pathname.length).replace('/', '');
+    //   setPathName(tmp);
+    //   console.log(tmp)
+    // }
+    // navigate(`/${movie_id}`)
+    window.location.href = `/${movie_id}`
   }
 
   return (
     <CardContainer>
       <MovieImage alt='movie-poster' loading='lazy' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
       <Details>
-        <MovieTitle to={`${movie.id}`}>
-        {movie.title}
+        <MovieTitle onClick={() => goToMovie(movie.id)}>
+          {movie.title}
         </MovieTitle>
         <Stats>
           <Rating>

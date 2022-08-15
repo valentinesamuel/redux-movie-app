@@ -15,7 +15,9 @@ function App() {
         <Route index element={<Home />} />
         <Route path="signin" element={ <SignIn/>} />
         <Route path="signup" element={<SignUp />} />
-        <Route path=":movieId" element={<DetailsPage/>} />
+        <Route path=":movieId" element={<DetailsPage />}>
+          {/* <Route path=":sub_movieId" element={<p>sub movie</p>} /> */}
+        </Route>
       </Route>
    </Routes>
   );

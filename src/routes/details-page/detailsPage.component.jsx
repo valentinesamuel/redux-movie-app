@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import Button, { BUTTON_TYPE_CLASSES } from "../../components/button/button.component"
 import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title, Category, OutlineTitle } from "./detailsPage.styles"
 import Star from "../../assets/icons/star.svg"
@@ -11,11 +11,13 @@ import ReviewRow from "../../components/review-row/Review-row.component"
 
 const DetailsPage = () => {
   const { movieId } = useParams()
+  const location = useLocation()
   const [detailMovie, setDetailMovie] = useState({})
   const [recommendedMovies, setRecommendedMovies] = useState([])
   const [similarMovies, setSimilarMovies] = useState([])
   const [movieCredit, setMovieCredit] = useState({})
   const [movieReview, setMovieReviews] = useState([])
+  
 
   useEffect(() => {
     let isApiSubscribed = true
@@ -42,9 +44,8 @@ const DetailsPage = () => {
     return () => {
       isApiSubscribed = false
     }
-  }, [movieId])
+  }, [movieId, location])
 
-  console.log(movieReview);
 
   return (
     <>
@@ -65,7 +66,8 @@ const DetailsPage = () => {
         </Title>
 
         <Description>
-          {detailMovie.overview}      </Description>
+          {detailMovie.overview}
+        </Description>
 
         <GenreContainer>
           {detailMovie.genres && detailMovie.genres.map((name) => (<p key={name.id}>{name.name}</p>))}

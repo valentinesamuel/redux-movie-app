@@ -37,7 +37,7 @@ padding: 1%;
 `
 
 export const Review = styled.p`
-font-size:1.4rem;
+font-size:1rem;
 display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

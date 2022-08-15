@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { FONTWEIGHT } from "../../utilities/designTokens";
 
 export const CardContainer = styled.div`
@@ -7,7 +6,7 @@ position:relative;
 min-width:20rem;
 margin: 0 4% 0 0;
 border-radius:5px;
-padding: 2%;
+padding: 1%;
 box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {
@@ -50,7 +49,7 @@ img{
 }
 `
 
-export const MovieTitle = styled(Link)`
+export const MovieTitle = styled.h3`
 font-size:1.5rem;
 
 display: -webkit-box;

@@ -7,6 +7,7 @@ import { getMovieCredits, getMovieDetails, getMovieRecommendation, getMovieRevie
 import MovieRow from "../../components/MovieRow/Movierow.component"
 import PeopleRow from "../../components/people-row/PeopleRow.component"
 import ReviewRow from "../../components/review-row/Review-row.component"
+import Spinner from "../../components/loading-spinner/loading-spinner.component"
 
 
 const DetailsPage = () => {
@@ -17,6 +18,7 @@ const DetailsPage = () => {
   const [similarMovies, setSimilarMovies] = useState([])
   const [movieCredit, setMovieCredit] = useState({})
   const [movieReview, setMovieReviews] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   
 
   useEffect(() => {
@@ -36,6 +38,7 @@ const DetailsPage = () => {
         setSimilarMovies(similarRes.results)
         setMovieReviews(movieReviewRes.results)
         console.log("fetch");
+        setIsLoading(false)
       }
     }
 
@@ -49,73 +52,76 @@ const DetailsPage = () => {
 
   return (
     <>
-      <DetailsContainer imageUrl={`https://image.tmdb.org/t/p/original${detailMovie.backdrop_path}`}>
-        {detailMovie.tagline && <Tagline>
-          {detailMovie.tagline}
-        </Tagline>}
+      {!isLoading ? <>
+        <DetailsContainer imageUrl={`https://image.tmdb.org/t/p/original${detailMovie.backdrop_path}`}>
+          {detailMovie.tagline && <Tagline>
+            {detailMovie.tagline}
+          </Tagline>}
 
-        {detailMovie.adult && <AdultContent>
-        </AdultContent>}
+          {detailMovie.adult && <AdultContent>
+          </AdultContent>}
 
-        <OutlineTitle>
-          {detailMovie.title}
-        </OutlineTitle>
+          <OutlineTitle>
+            {detailMovie.title}
+          </OutlineTitle>
 
-        <Title>
-          {detailMovie.title}
-        </Title>
+          <Title>
+            {detailMovie.title}
+          </Title>
 
-        <Description>
-          {detailMovie.overview}
-        </Description>
+          <Description>
+            {detailMovie.overview}
+          </Description>
 
-        <GenreContainer>
-          {detailMovie.genres && detailMovie.genres.map((name) => (<p key={name.id}>{name.name}</p>))}
-        </GenreContainer>
+          <GenreContainer>
+            {detailMovie.genres && detailMovie.genres.map((name) => (<p key={name.id}>{name.name}</p>))}
+          </GenreContainer>
 
-        <StatsContainer>
-          <p className='year'>{detailMovie.release_date}</p>
-          <div className='divider'></div>
-          <img src={Star} className="star" alt="star" />
-          <p className='rating'>{detailMovie.vote_average}</p>
-          <p className="votes">{detailMovie.vote_count} votes</p>
-        </StatsContainer>
+          <StatsContainer>
+            <p className='year'>{detailMovie.release_date}</p>
+            <div className='divider'></div>
+            <img src={Star} className="star" alt="star" />
+            <p className='rating'>{detailMovie.vote_average}</p>
+            <p className="votes">{detailMovie.vote_count} votes</p>
+          </StatsContainer>
 
-        <ButtonContainer>
-          <Button className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
-          <Button buttonType={BUTTON_TYPE_CLASSES.white} >Add To List</Button>
-        </ButtonContainer>
+          <ButtonContainer>
+            <Button className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
+            <Button buttonType={BUTTON_TYPE_CLASSES.white} >Add To List</Button>
+          </ButtonContainer>
 
-        <PictureSlides>
-          {/* <img loading='lazy' src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
+          <PictureSlides>
+            {/* <img loading='lazy' src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
                     <img loading='lazy' src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
                     <img loading='lazy' src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
                     <img loading='lazy' src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' />
                     <img loading='lazy' src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="movie" className='image' /> */}
-        </PictureSlides>
+          </PictureSlides >
 
-      </DetailsContainer>
-      <Category>
-        <h2>Cast</h2>
-        <PeopleRow people={movieCredit.cast} />
-      </Category>
-      <Category>
-        <h2>Crew</h2>
-        <PeopleRow people={movieCredit.crew} />
-      </Category>
-      <Category>
-        <h2>Reviews</h2>
-        <ReviewRow reviews={movieReview} />
-      </Category>
-      <Category>
-        <h2>Similar to {detailMovie.title}</h2>
-        <MovieRow moviesList={similarMovies} />
-      </Category>
-      <Category>
-        <h2>Recommended for you</h2>
-        <MovieRow moviesList={recommendedMovies} />
-      </Category>
-    </>)
+        </DetailsContainer >
+        <Category>
+          <h2>Cast</h2>
+          <PeopleRow people={movieCredit.cast} />
+        </Category>
+        <Category>
+          <h2>Crew</h2>
+          <PeopleRow people={movieCredit.crew} />
+        </Category>
+        <Category>
+          <h2>Reviews</h2>
+          <ReviewRow reviews={movieReview} />
+        </Category>
+        <Category>
+          <h2>Similar to {detailMovie.title}</h2>
+          <MovieRow moviesList={similarMovies} />
+        </Category>
+        <Category>
+          <h2>Recommended for you</h2>
+          <MovieRow moviesList={recommendedMovies} />
+        </Category> 
+      </> : <Spinner/>}
+    </>
+  )
 }
 
 export default DetailsPage

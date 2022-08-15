@@ -1,5 +1,5 @@
 import React from 'react'
-import { Review, ReviewCardContainer, ReviewerImage } from './ReviewCard.styles'
+import { Review, ReviewCardContainer } from './ReviewCard.styles'
 
 const ReviewCard = ({ review }) => {
     return (

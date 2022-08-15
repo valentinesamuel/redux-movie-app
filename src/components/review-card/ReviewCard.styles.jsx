@@ -3,14 +3,25 @@ import styled from "styled-components";
 export const ReviewCardContainer = styled.div`
 display:flex;
 max-height:15%;
-width:30%;
-margin-right:3%;
+width:10rem;
 padding:1%;
+padding-right:3%;
 box-shadow: rgbox-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;ba(0, 0, 0, 0.1) 0px 4px 12px;
 div{
     h3{
         margin-bottom:10px;
     }
+}
+  
+
+@media only screen and (max-width: 30rem) {
+width:100%;
+margin-right:0%;
+margin:2% 0;
+}
+
+@media only screen and (max-width: 50rem) {
+  
 }
 `
  

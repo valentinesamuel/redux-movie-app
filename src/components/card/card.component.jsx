@@ -2,14 +2,18 @@ import { CardContainer, Details, Add, MovieImage, Rating, MovieTitle, Stats, Des
 import addIcon from '../../assets/icons/add.svg'
 import starIcon from '../../assets/icons/star.svg';
 import { useDispatch } from 'react-redux';
-import { addMovieToList } from '../../features/movie/userMovieList';
+import { addMovieToList, hideFeedbackMessage, showFeedbackMessage } from '../../features/movie/userMovieList';
 
 
 const Card = ({ movie }) => {
   const dispatch = useDispatch()
 
+
   const addToUserMovieList = (movie) => {
     dispatch(addMovieToList(movie))
+    dispatch(showFeedbackMessage())
+    setTimeout(()=>dispatch(hideFeedbackMessage()), 3000);
+  //  let duration =  clearTimeout(duration);
   }
 
   const goToMovie = (movie_id) => {

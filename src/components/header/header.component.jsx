@@ -3,11 +3,14 @@ import { HeaderContainer, ButtonContainer, Description, GenreContainer, StatsCon
 import Star from "../../assets/icons/star.svg"
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component"
 import { getNowPlayingMovie } from '../../utilities/tmdb';
+import Prompt from '../prompt/Prompt.component';
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
     const [movies, setMovies] = useState([])
-    
+    const feedbackControl = useSelector(state => state.userMovieListSlice.feedbackMessage)
+
     useEffect(() => {
     
         const getHeaderMovie = async () => {
@@ -19,7 +22,8 @@ const Header = () => {
 
     return (
 
-            <HeaderContainer imageUrl={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}>
+        <HeaderContainer imageUrl={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}>
+          { feedbackControl === true &&  <Prompt message={"srgh"}/>}
                 <Tagline>
                   {movies.tagline ? " Lorem ipsum dolor sit amet" : ""}
                 </Tagline>

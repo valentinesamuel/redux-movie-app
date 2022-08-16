@@ -3,6 +3,7 @@ import { getUserMovieList } from "../../utilities/firebase"
 
 const initialState = {
     movieList: [],
+    feedbackMessage: false,
 }
 
 export const getMovieList = createAsyncThunk("movieList/getUserMovieList", async (email) => {
@@ -11,26 +12,35 @@ export const getMovieList = createAsyncThunk("movieList/getUserMovieList", async
 })
 
 
+
 export const userMovieListSlice = createSlice({
     name: 'userMoviesList',
     initialState,
     reducers: {
         addMovieToList: (state, action) => {
-            state.movieList.push(action.payload)
+            state.movieList.push(action.payload)    
+            state.feedbackMessage =false
         },
         removeMovieFromList: (state, action) => {
-          state.movieList = state.movieList.filter(movie => movie.id !== action.payload.id)
+            state.movieList = state.movieList.filter(movie => movie.id !== action.payload.id)
         },
         clearMovieList: (state) => {
-            state.movieList = null;
-        }
+            state.movieList = [];
+        },
+        showFeedbackMessage: (state,) => {
+            state.feedbackMessage = true
+        },
+        hideFeedbackMessage: (state, ) => {
+            state.feedbackMessage = false
+        },
     },
     extraReducers(builder) {
         builder.addCase(getMovieList.fulfilled, (state, action) => {
             state.movieList = action.payload[0].listOfMovies
         })
+     
     }
 })
-export const { addMovieToList, removeMovieFromList, clearMovieList } = userMovieListSlice.actions
+export const { addMovieToList, removeMovieFromList, clearMovieList, hideFeedbackMessage, showFeedbackMessage } = userMovieListSlice.actions
 
 export default userMovieListSlice.reducer

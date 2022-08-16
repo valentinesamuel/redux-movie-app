@@ -3,8 +3,20 @@ import { FONTWEIGHT,DURATION } from "../../utilities/designTokens";
 
 export const UserMoviesContainer = styled.div`
 padding: 0 4%;
+`
+
+export const ButtonContainer = styled.div`
 display:flex;
+
+.leftbtn{
+  margin-right:20%;
+}
+`
+
+export const MovieListContainer = styled.div`
+
 flex-wrap:wrap;
+display:flex;
 `
 
 export const NoMoviesText = styled.p`

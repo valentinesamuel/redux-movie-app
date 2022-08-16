@@ -41,6 +41,7 @@ const SignIn = () => {
     dispatch(storeGetUpcomingMovies())
  //find way to navigate to auth-homepage after login
     navigate("/");
+    // window.location.href = ""
   };
 
   const loginWithGoogle = async () => {

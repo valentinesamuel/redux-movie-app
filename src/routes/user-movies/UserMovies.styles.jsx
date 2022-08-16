@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FONTWEIGHT } from "../../utilities/designTokens";
+import { FONTWEIGHT,DURATION } from "../../utilities/designTokens";
 
 export const UserMoviesContainer = styled.div`
 padding: 0 4%;
@@ -11,6 +11,7 @@ export const NoMoviesText = styled.p`
 font-size:1.5rem;
 text-align:center;
 padding: 3% 0;
+margin:0 auto;
 `
 export const CardContainer = styled.div`
 position:relative;
@@ -18,6 +19,7 @@ width:20rem;
 margin: 0 4% 0 0;
 border-radius:5px;
 padding: 1%;
+transition: ${DURATION.point3};
 box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {

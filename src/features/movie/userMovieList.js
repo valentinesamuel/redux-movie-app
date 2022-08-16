@@ -19,8 +19,7 @@ export const userMovieListSlice = createSlice({
             state.movieList.push(action.payload)
         },
         removeMovieFromList: (state, action) => {
-            state.movieList.filter(movie => movie.id === action.payload.id)
-            // try to filter in place
+          state.movieList = state.movieList.filter(movie => movie.id !== action.payload.id)
         },
         clearMovieList: (state) => {
             state.movieList = null;

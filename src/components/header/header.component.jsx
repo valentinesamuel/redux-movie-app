@@ -17,8 +17,6 @@ const Header = () => {
         getHeaderMovie()
     }, [])
 
-
-
     return (
 
             <HeaderContainer imageUrl={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}>

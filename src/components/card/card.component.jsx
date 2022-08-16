@@ -34,7 +34,7 @@ const Card = ({ movie }) => {
             <img loading='lazy' src={starIcon} alt="star" />
             <p>{movie.vote_average} / 10</p>
           </Rating>
-          <Add loading='lazy' onClick={() => addToUserMovieList(movie.id, movie)} src={addIcon} alt='add'></Add>
+          <Add loading='lazy' onClick={() => addToUserMovieList(movie)} src={addIcon} alt='add'></Add>
         </Stats>
         <Description>
           <p>

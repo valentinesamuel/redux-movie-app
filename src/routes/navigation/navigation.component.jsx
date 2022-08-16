@@ -16,7 +16,7 @@ const Navigation = () => {
         <LogoLink to="/">Feems</LogoLink>
        {auth.status === "authed" ? <Links>
           <NavLink to="">Home</NavLink>
-          <NavLink to="">Movies</NavLink>
+          <NavLink to="userlist">My List</NavLink>
           <NavLink to="">Tv Shows</NavLink>
         </Links> : ""}
         {auth.status === "authed" ? <AuthNavbar/> : <Navbar />}

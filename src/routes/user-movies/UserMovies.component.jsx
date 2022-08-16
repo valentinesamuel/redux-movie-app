@@ -12,7 +12,6 @@ const UserMovies = () => {
     const username = useSelector((state) => state.userSlice.userData)
 
     const removeFromUserMovieList = (movie) => {
-        console.log('remove');
         dispatch(removeMovieFromList(movie))
     }
 

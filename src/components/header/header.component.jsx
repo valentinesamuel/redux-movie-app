@@ -25,7 +25,7 @@ const Header = () => {
         <HeaderContainer imageUrl={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}>
           { feedbackControl === true &&  <Prompt message={"srgh"}/>}
                 <Tagline>
-                  {movies.tagline ? " Lorem ipsum dolor sit amet" : ""}
+                {movies.tagline ? movies.tagline : null}
                 </Tagline>
 
                 {movies.adult && <AdultContent>

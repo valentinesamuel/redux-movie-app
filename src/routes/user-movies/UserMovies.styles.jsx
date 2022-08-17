@@ -3,6 +3,12 @@ import { FONTWEIGHT,DURATION } from "../../utilities/designTokens";
 
 export const UserMoviesContainer = styled.div`
 padding: 0 4%;
+ @media only screen and (max-width: 30rem) {
+   
+  }
+
+  @media only screen and (max-width: 50rem) {
+  }
 `
 
 export const ButtonContainer = styled.div`
@@ -35,7 +41,7 @@ transition: ${DURATION.point3};
 box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {
-   width:12rem;
+   width:100%;
   }
 
   @media only screen and (max-width: 50rem) {

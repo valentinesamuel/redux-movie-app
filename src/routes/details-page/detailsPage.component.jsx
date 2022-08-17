@@ -112,7 +112,7 @@ const DetailsPage = () => {
           <ReviewRow reviews={movieReview} />
         </Category>
         <Category>
-          <h2>Similar to {detailMovie.title}</h2>
+          <h2>Similar to <span>{detailMovie.title}</span></h2>
           <MovieRow moviesList={similarMovies} />
         </Category>
         <Category>

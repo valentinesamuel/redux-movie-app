@@ -13,7 +13,7 @@ background-size: cover;
 
 
   @media only screen and (max-width: 30rem) {
-   
+   padding:5% 4% 2% 4%;
   }
 
   @media only screen and (max-width: 50rem) {
@@ -169,6 +169,7 @@ margin: 2.5rem 0 0 0;
   }
 
   @media only screen and (max-width: 50rem) {
+    width:50%;
   }
 `
 
@@ -205,6 +206,14 @@ export const Category = styled.div`
 h2{
  font-size: ${FONTSIZES.h2};
  padding: 3rem 0 1.2rem 0;
+
+ span{
+  color:${COLORS.red};
+ }
+ @media only screen and (max-width: 30rem) {
+  font-size: ${FONTSIZES.h3};
+  }
 }
 margin-left:2%;
+
 `

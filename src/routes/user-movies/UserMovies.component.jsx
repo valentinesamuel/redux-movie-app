@@ -40,7 +40,7 @@ const UserMovies = () => {
                     </ButtonContainer>
                     <MovieListContainer>
                         {movies.map(movie => {
-                            return <CardContainer>
+                            return <CardContainer >
                                 <MovieImage alt='movie-poster' loading='lazy' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
                                 <Details>
                                     <MovieTitle onClick={() => goToMovie(movie.id)}>

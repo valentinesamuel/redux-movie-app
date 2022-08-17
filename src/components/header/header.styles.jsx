@@ -150,7 +150,8 @@ margin: 2.5rem 0 0 0;
     }
   }
 
-  @media only screen and (max-width: 50rem) {
+   @media only screen and (max-width: 50rem) {
+        width:100%;
   }
 `
 

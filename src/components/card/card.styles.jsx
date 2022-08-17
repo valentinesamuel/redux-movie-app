@@ -11,6 +11,7 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {
    min-width:12rem;
+       margin: 0 4% 0 0;
   }
 
   @media only screen and (max-width: 50rem) {

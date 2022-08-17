@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FONTWEIGHT,DURATION } from "../../utilities/designTokens";
+import { FONTWEIGHT,DURATION, COLORS } from "../../utilities/designTokens";
 
 export const UserMoviesContainer = styled.div`
 padding: 0 4%;
@@ -13,10 +13,18 @@ padding: 0 4%;
 
 export const ButtonContainer = styled.div`
 display:flex;
-
+margin:2% 0;
 .leftbtn{
   margin-right:20%;
 }
+ @media only screen and (max-width: 30rem) {
+justify-content:space-between;
+margin-top:12%;
+  .leftbtn{
+  margin:0% 4%;
+}
+  }
+
 `
 
 export const MovieListContainer = styled.div`
@@ -34,6 +42,7 @@ margin:0 auto;
 export const CardContainer = styled.div`
 position:relative;
 width:20rem;
+background-color: ${COLORS.black};
 margin: 0 4% 0 0;
 border-radius:5px;
 padding: 1%;
@@ -42,6 +51,8 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
  @media only screen and (max-width: 30rem) {
    width:100%;
+   padding: 4%;
+   margin: 5% 0 5% 0;
   }
 
   @media only screen and (max-width: 50rem) {
@@ -96,7 +107,6 @@ export const Description = styled.div`
 
 p{ 
     line-height:1.5rem;
-
   display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;

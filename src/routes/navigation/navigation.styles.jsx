@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS, FONT, FONTWEIGHT, } from "../../utilities/designTokens";
+import { COLORS, DURATION, FONT, FONTWEIGHT, } from "../../utilities/designTokens";
 
 export const Nav = styled.div`
 
@@ -45,6 +45,9 @@ export const NavLink = styled(Link)`
   font-weight: ${FONTWEIGHT.bold};
   margin-right: 1rem;
 
+  &:hover{
+    text-decoration:underline;
+}
   @media only screen and (max-width: 30rem) {
     display:none
   }

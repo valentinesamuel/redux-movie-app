@@ -23,7 +23,7 @@ const Header = () => {
     return (
 
         <HeaderContainer imageUrl={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}>
-          { feedbackControl === true &&  <Prompt message={"srgh"}/>}
+            {feedbackControl === true && <Prompt message={"Added to user's list"} />}
                 <Tagline>
                 {movies.tagline ? movies.tagline : null}
                 </Tagline>

@@ -52,7 +52,7 @@ img{
 
 export const MovieTitle = styled.h3`
 font-size:1.5rem;
-
+cursor:pointer;
 display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -60,6 +60,10 @@ display: -webkit-box;
 text-decoration:none;
 margin:1% 0;
     font-weight: ${FONTWEIGHT.semiBold};
+
+    &:hover{
+      text-decoration:underline;
+    }
 `
 
 export const Description = styled.div`

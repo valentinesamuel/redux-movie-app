@@ -12,17 +12,10 @@ const Card = ({ movie }) => {
   const addToUserMovieList = (movie) => {
     dispatch(addMovieToList(movie))
     dispatch(showFeedbackMessage())
-    setTimeout(()=>dispatch(hideFeedbackMessage()), 3000);
-  //  let duration =  clearTimeout(duration);
+    setTimeout(()=>dispatch(hideFeedbackMessage()), 2000);
   }
 
   const goToMovie = (movie_id) => {
-    // if (location) {
-    //   let tmp = location.pathname.slice(location.pathname.lastIndexOf("/"), location.pathname.length).replace('/', '');
-    //   setPathName(tmp);
-    //   console.log(tmp)
-    // }
-    // navigate(`/${movie_id}`)
     window.location.href = `/${movie_id}`
   }
 

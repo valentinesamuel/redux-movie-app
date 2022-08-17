@@ -4,21 +4,29 @@ import Star from "../../assets/icons/star.svg"
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component"
 import { getNowPlayingMovie } from '../../utilities/tmdb';
 import Prompt from '../prompt/Prompt.component';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMovieToList, hideFeedbackMessage, showFeedbackMessage } from '../../features/movie/userMovieList';
 
 
 const Header = () => {
+    const dispatch = useDispatch()
     const [movies, setMovies] = useState([])
+    const [randomNumber, ] = useState(Math.floor(Math.random() * 19))
     const feedbackControl = useSelector(state => state.userMovieListSlice.feedbackMessage)
 
     useEffect(() => {
-    
         const getHeaderMovie = async () => {
             const movieData = await getNowPlayingMovie();
-            setMovies(movieData.results[Math.floor(Math.random() * 19)])
+            setMovies(movieData.results[randomNumber])
         }
         getHeaderMovie()
-    }, [])
+    }, [randomNumber])
+
+    const addToUserList = (movie) => {
+        dispatch(addMovieToList(movie))
+        dispatch(showFeedbackMessage())
+        setTimeout(() => dispatch(hideFeedbackMessage()), 2000);
+    }
 
     return (
 
@@ -55,8 +63,8 @@ const Header = () => {
                 </StatsContainer>
 
                 <ButtonContainer>
-                    <Button className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
-                    <Button buttonType={BUTTON_TYPE_CLASSES.white} >Add To List</Button>
+                <Button onClick={()=>alert("Sorry, this API does not support videos for now")} className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
+                <Button buttonType={BUTTON_TYPE_CLASSES.white} onClick={() => addToUserList(movies)}>Add To List</Button>
                 </ButtonContainer>
 
                 <PictureSlides>

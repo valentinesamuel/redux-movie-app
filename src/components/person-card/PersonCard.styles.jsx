@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS, FONT, FONTSIZES, FONTWEIGHT } from "../../utilities/designTokens";
+import { COLORS, FONTWEIGHT } from "../../utilities/designTokens";
 
 export const PersonCardContainer = styled.div`
 min-width:10rem;

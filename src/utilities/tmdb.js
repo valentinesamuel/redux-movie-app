@@ -1,5 +1,5 @@
 import axios from 'axios'
-const TMBD_API_KEY = "d93de582597225ca43bf22d8465a9e19"
+const TMBD_API_KEY = process.env.REACT_APP_TMDB_KEY
 
 /*=======MOVIES=======*/
 export const discoverMovies = async () => {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS, DURATION, FONT, FONTWEIGHT, } from "../../utilities/designTokens";
+import { COLORS, FONT, FONTWEIGHT, } from "../../utilities/designTokens";
 
 export const Nav = styled.div`
 
@@ -16,7 +16,7 @@ export const LogoLink = styled(Link)`
   color: ${COLORS.red};
   
   @media only screen and (max-width: 30rem) {
-     font-size: 2rem;
+     font-size: 2.5rem;
    
   }
 
@@ -32,7 +32,12 @@ export const NavContainer = styled.nav`
   padding: 0 4%;
   width: 100%;
 
+  @media only screen and (max-width: 30rem) {
+  padding: 4% 4%;
+  }
 
+  @media only screen and (max-width: 50rem) {
+  }
 `;
 
 export const NavLink = styled(Link)`

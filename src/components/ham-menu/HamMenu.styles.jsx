@@ -32,7 +32,6 @@ right:4%;
 position:absolute;
 display:flex;
 flex-direction:column;
-
 align-items:center;
 padding:4%;
 

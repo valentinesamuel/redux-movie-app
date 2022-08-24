@@ -3,7 +3,9 @@ import { UserData, UserState } from "./user.types";
 import { getUser, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 
 const initialState: UserState = {
-    userData: {},
+    userData: {
+        
+    },
     status: "unauth", //'authing' | 'authed' | 'failed' | 'unauth'
 };
 

@@ -1,4 +1,5 @@
 import { User } from "firebase/auth"
+import { DocumentData } from "firebase/firestore"
 
 export type UserData = {
     email: string,
@@ -8,9 +9,13 @@ export type UserData = {
         nanoseconds: number
     } | Date | number
 
-} | User
+} | User | {}
 
 export type UserState = {
-    userData: UserData | {},
+    userData: UserData & {
+        email: string,
+        displayName: string, 
+    } | any,
+    ///check if any can be changed to a more definitive type???
     status: string
 }

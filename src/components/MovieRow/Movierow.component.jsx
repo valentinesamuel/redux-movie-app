@@ -5,7 +5,7 @@ const MovieRow = ({ moviesList }) => {
 
     return (
         <MovieRowContainer>
-            {moviesList.map(movie => {
+            {moviesList && moviesList.map(movie => {
                 return <Card key={movie.id} movie={movie} />
             })}
 

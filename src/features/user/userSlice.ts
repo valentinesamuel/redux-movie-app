@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { UserData, UserState } from "../user.types";
+import { UserData, UserState } from "./user.types";
 import { getUser, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 
 const initialState: UserState = {

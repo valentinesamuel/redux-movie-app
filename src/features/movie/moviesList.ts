@@ -1,23 +1,24 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getNowPlayingMovie, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from "../../utilities/tmdb";
+import {  MovieList, MovieListInitialState } from "./movie.types";
 
-const initialState = {
+const initialState: MovieListInitialState = {
     movies: {
-        popularMovies: [],
-        topRatedMovies: [],
-        nowPlayingMovies: [],
-        upcomingMovies: [],
+        popularMovies: {},
+        topRatedMovies: {},
+        nowPlayingMovies: {},
+        upcomingMovies: {},
     }
 }
 
-export const storeGetPopularMovies =createAsyncThunk("movieList/getPopularMovies", async () => {
+export const storeGetPopularMovies = createAsyncThunk("movieList/getPopularMovies", async () => {
     const response = await getPopularMovies();
-    return(response)
+    return (response)
 })
 
 export const storeGetTopRatedMovies = createAsyncThunk("movieList/getTopRatedMovies", async () => {
     const response = await getTopRatedMovies();
-    return(response)
+    return (response)
 })
 
 export const storeGetNowPlayingMovies = createAsyncThunk("movieList/getNowPlayingMovies", async () => {
@@ -31,17 +32,17 @@ export const storeGetUpcomingMovies = createAsyncThunk("movieList/getUpcomingMov
 })
 
 export const movieListSlice = createSlice({
-    name:'movieList',
+    name: 'movieList',
     initialState,
     reducers: {},
     extraReducers(builder) {
-        builder.addCase(storeGetPopularMovies.fulfilled, (state, action) => {
+        builder.addCase(storeGetPopularMovies.fulfilled, (state, action:PayloadAction<MovieList[]>) => {
             state.movies.popularMovies = action.payload
-        }).addCase(storeGetTopRatedMovies.fulfilled, (state, action) => {
+        }).addCase(storeGetTopRatedMovies.fulfilled, (state, action: PayloadAction<MovieList[]>) => {
             state.movies.topRatedMovies = action.payload
-        }).addCase(storeGetNowPlayingMovies.fulfilled, (state, action) => {
+        }).addCase(storeGetNowPlayingMovies.fulfilled, (state, action: PayloadAction<MovieList[]>) => {
             state.movies.nowPlayingMovies = action.payload
-        }).addCase(storeGetUpcomingMovies.fulfilled, (state, action) => {
+        }).addCase(storeGetUpcomingMovies.fulfilled, (state, action: PayloadAction<MovieList[]>) => {
             state.movies.upcomingMovies = action.payload
         })
     }

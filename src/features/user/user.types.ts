@@ -5,12 +5,12 @@ export type UserData = {
     displayName: string,
     createdAt?: {
         seconds: number,
-        nanoseconds:number
+        nanoseconds: number
     } | Date | number
 
-}| User
+} | User
 
 export type UserState = {
-    userData:UserData | {},
+    userData: UserData | {},
     status: string
 }

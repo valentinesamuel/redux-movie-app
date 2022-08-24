@@ -1,4 +1,3 @@
-// create a movie type
 export type Movie = {
     adult: boolean,
     title: string,
@@ -26,12 +25,6 @@ export type Movie = {
     video?: boolean,
 }
 
-// create a movie cateory type
-export type Category = {
-
-}
-
-// create a movie list state type
 export type MovieList = {
     page: number,
     total_pages: number,
@@ -39,7 +32,6 @@ export type MovieList = {
     results: Movie[]
 }
 
-// create a movie list initial state type
 export type MovieListInitialState = {
     movies: {
         popularMovies: {},
@@ -52,7 +44,14 @@ export type MovieListInitialState = {
 
 
 // create a movie list type
+export type UserMovieList = {
+    listOfMovies: Movie[] | undefined | null | []
+    email?: string
+    feedbackMessage?:boolean
+}
 
 // create a user movie list state type
-
-// create a user movie list initial state type
+export type UserMovieListInitialState = {
+    listOfMovies: Movie[],
+    feedbackMessage: boolean,
+}

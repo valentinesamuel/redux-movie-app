@@ -1,13 +1,12 @@
-import {  } from "redux";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.component";
 import AuthNavbar from "../../components/authNavbar/authNavbar.component";
 import { LogoLink, NavContainer, Links, NavLink } from "./navigation.styles";
-import { useSelector } from "react-redux";
 import Footer from "../../components/footer/footer.component";
+import { useAppSelector } from "../../utilities/hooks/rootstate";
 
 const Navigation = () => {
-  const auth = useSelector((state) => state.userSlice)
+  const auth = useAppSelector((state) => state.userSlice)
 
   return (
    

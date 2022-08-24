@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { COLORS, FONTSIZES } from "../../utilities/designTokens";
+import { BackgroundImageProps } from "../../utilities/types";
 import Button from "../button/button.component";
+
 
 export const HomeContainer = styled.div`
 
 `;
 
-export const HeaderSection = styled.header`
+export const HeaderSection = styled.header<BackgroundImageProps>`
 padding: 10% 0 10% 4%;
 background-image: linear-gradient(
   5deg,

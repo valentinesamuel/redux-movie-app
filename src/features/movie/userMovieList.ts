@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction, } from "@reduxjs/toolkit";
 import { getUserMovieList } from "../../utilities/firebase"
-import { Movie, UserMovieList, UserMovieListInitialState } from "./movie.types";
+import { Movie, UserMovieListInitialState } from "./movie.types";
 
 const initialState:UserMovieListInitialState = {
     listOfMovies: [],

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../../components/form-input/form-input.component";
 import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
@@ -7,10 +7,10 @@ import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
-import { useDispatch } from "react-redux";
 import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../../features/user/userSlice";
 import { getMovieList } from "../../features/movie/userMovieList";
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from "../../features/movie/moviesList";
+import { useAppDispatch } from "../../utilities/hooks/appdispatch";
 
 
 const defaultformFields = {
@@ -19,19 +19,19 @@ const defaultformFields = {
 };
 
 const SignIn = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
   const navigate = useNavigate();
 
   const { email, password } = formFields;
   const registered = false; //use state to manipulate this
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(getCurrentUser(email))
     dispatch(getMovieList(email))
@@ -39,7 +39,7 @@ const SignIn = () => {
     dispatch(storeGetTopRatedMovies())
     dispatch(storeGetNowPlayingMovies())
     dispatch(storeGetUpcomingMovies())
- //find way to navigate to auth-homepage after login
+    //find way to navigate to auth-homepage after login
     navigate("/");
     // window.location.href = ""
   };

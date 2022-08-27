@@ -1,21 +1,10 @@
-import { User } from "firebase/auth"
-import { DocumentData } from "firebase/firestore"
 
-export type UserData = {
-    email: string,
-    displayName: string,
-    createdAt?: {
-        seconds: number,
-        nanoseconds: number
-    } | Date | number
-
-} | User | {}
+export type UserDetails = {
+    email: string | null,
+    displayName: string | null
+}  
 
 export type UserState = {
-    userData: UserData & {
-        email: string,
-        displayName: string, 
-    } | any,
-    ///check if any can be changed to a more definitive type???
+    userData: UserDetails,
     status: string
 }

@@ -2,10 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./routes/navigation/navigation.component";
 
 import Home from "./routes/home/home.component";
-import SignIn from "./routes/sign-in/sign-in.component";
 import SignUp from "./routes/sign-up/sign-up.component";
 import DetailsPage from "./routes/details-page/detailsPage.component";
 import UserMovies from "./routes/user-movies/UserMovies.component";
+import SignIn from "./routes/sign-in/sign-in.component";
 
 
 

@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
 import AuthHome from "../../components/authHome/authHome.component";
 import LandingPage from "../../components/landingPage/LandingPage.component";
+import { useAppSelector } from "../../utilities/hooks/rootstate";
 import { HomeContainer } from "./home.styles";
 const Home = () => {
-  const auth = useSelector((state) => state.userSlice)
+  const auth = useAppSelector((state) => state.userSlice)
   return (
    
     <HomeContainer>

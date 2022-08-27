@@ -13,22 +13,20 @@ const AuthNavbar = () => {
   const navigate = useNavigate();
 
   const auth = useAppSelector((state) => state.userSlice)
-
   const onLogOut = () => {
     dispatch(logCurrentUserOut());
     dispatch(clearMovieList())
     navigate("/")
-}
+  }
 
   return (
-  
-      <AuthNavabarContainer>
+    <AuthNavabarContainer>
       {auth.status === "authed" && <UserName>{auth.userData.displayName}</UserName>}
-        <HamMenu/>
-        <SignOutButton onClick={onLogOut} buttonType={BUTTON_TYPE_CLASSES.red}>
-          Sign Out
-        </SignOutButton>
-      </AuthNavabarContainer>
+      <HamMenu />
+      <SignOutButton onClick={onLogOut} buttonType={BUTTON_TYPE_CLASSES.red}>
+        Sign Out
+      </SignOutButton>
+    </AuthNavabarContainer>
 
   )
 }

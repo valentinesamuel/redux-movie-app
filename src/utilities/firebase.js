@@ -62,7 +62,9 @@ export const getCategoriesAndDocuments = async () => {
 }
 
 export const getUser = async (email) => {
+  // request for user:User
   const collectionRef = collection(db, 'users')
+  // query where uid == userauth.uid
   const q = query(collectionRef, where("email", "==", email));
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
@@ -70,7 +72,9 @@ export const getUser = async (email) => {
 }
 
 export const getUserMovieList = async (email) => {
+    // request for user:User
   const collectionRef = collection(db, 'movies')
+    // query where uid == userauth.uid
   const q = query(collectionRef, where("email", "==", email));
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
@@ -81,6 +85,7 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
+  // change userauth.email to uid
   const userDocRef = doc(db, 'users', userAuth.email);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
@@ -105,7 +110,9 @@ export const createUserMovieListDocument = async (
   userAuth,
   listOfMovies
 ) => {
+   // request for user:User
   if (!userAuth) return;
+    // change userauth.email to uid
   const userDocRef = doc(db, 'movies', userAuth.email);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {

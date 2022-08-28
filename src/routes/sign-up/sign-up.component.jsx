@@ -41,11 +41,12 @@ const SignUp = () => {
 
     try {
       const { user } = await createAuthUserWithEmailAndPassword(email, password);
+      //get user pass it into createUserDocumentFromAuth
       await createUserDocumentFromAuth(user, { displayName });
       await createUserMovieListDocument(user, movieList)
       resetFormFields();
+// pass in user
       dispatch(getCurrentUser(email))
-      // dispatch action to get movielist here
       dispatch(storeGetPopularMovies())
       dispatch(storeGetTopRatedMovies())
       dispatch(storeGetNowPlayingMovies())

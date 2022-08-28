@@ -33,6 +33,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // sign in with email and password
     dispatch(getCurrentUser(email))
     dispatch(getMovieList(email))
     dispatch(storeGetPopularMovies())

@@ -8,3 +8,8 @@ export type UserState = {
     userData: UserDetails,
     status: string
 }
+
+export type UnauthUser = {
+    UserEmail: string,
+    UserPassword:string
+}

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { UserDetails, UserState } from "./user.types";
-import { getUser, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
+import { UnauthUser, UserDetails, UserState } from "./user.types";
+import { getUser, signInAuthUserWithEmailAndPassword, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
+import { userInfo } from "os";
 
 const initialState: UserState = {
     userData: {
@@ -22,6 +23,15 @@ export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async 
     return { email, displayName };
 })
 
+export const loginWithEmailandPassword = createAsyncThunk("userData/loginWithEmailandPassword", async (userInfo: UnauthUser) => {
+    const { UserEmail, UserPassword } = userInfo
+    const response = await signInAuthUserWithEmailAndPassword(UserEmail, UserPassword)
+    const email = response?.user.email
+    const displayName = response?.user.displayName
+    return { email, displayName }
+}
+    // add case for login with email and pasword and try return type of UserDetails
+)
 
 export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () => {
     const response = await signOutUser()
@@ -29,7 +39,7 @@ export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () =>
 })
 
 export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
-    const response = await signInWithGithubPopup(); 
+    const response = await signInWithGithubPopup();
     const { displayName, email } = response.user;
     return { displayName, email }
 

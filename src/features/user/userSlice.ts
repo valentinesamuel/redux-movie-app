@@ -40,6 +40,9 @@ export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () =>
 export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
     const response = await signInWithGithubPopup();
     const { displayName, email } = response.user;
+    // create a user document from auth and also create a usermovielist
+    // await createUserDocumentFromAuth(res!, { displayName });
+    // await createUserMovieListDocument(res!, movieList)
     return { displayName, email }
 
 })

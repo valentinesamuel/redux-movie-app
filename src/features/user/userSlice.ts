@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { UnauthUser, UserDetails, UserState } from "./user.types";
 import { getUser, signInAuthUserWithEmailAndPassword, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
-import { userInfo } from "os";
 
 const initialState: UserState = {
     userData: {
@@ -30,7 +29,7 @@ export const loginWithEmailandPassword = createAsyncThunk("userData/loginWithEma
     const displayName = response?.user.displayName
     return { email, displayName }
 }
-    // add case for login with email and pasword and try return type of UserDetails
+   
 )
 
 export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () => {

@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 import FormInput from '../../components/form-input/form-input.component';
 import { getCurrentUser } from '../../features/user/userSlice';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
 import { LoginPrompt, SignUpButton, SignUpContainer, SignInLink } from './sign-up.styles';
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from '../../features/movie/moviesList';
+import { useAppSelector } from '../../utilities/hooks/rootstate';
+import { useAppDispatch } from '../../utilities/hooks/appdispatch';
+import { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 
 const defaultFormFields = {
   email: "",
@@ -20,19 +21,19 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const navigate = useNavigate();
   const { email, password, confirmPassword, displayName } = formFields;
-  const movieList = useSelector((state) => state.userMovieListSlice.movieList)
-  const dispatch = useDispatch()
+  const movieList = useAppSelector((state) => state.userMovieListSlice.listOfMovies)
+  const dispatch = useAppDispatch()
 
-  const resetFormFields = (event) => {
+  const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Oopsie, password do not match");
@@ -40,19 +41,18 @@ const SignUp = () => {
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(email, password);
+      const res = await createAuthUserWithEmailAndPassword(email, password);
       //get user pass it into createUserDocumentFromAuth
-      await createUserDocumentFromAuth(user, { displayName });
-      await createUserMovieListDocument(user, movieList)
+      await createUserDocumentFromAuth(res!, { displayName });
+      await createUserMovieListDocument(res!, movieList)
       resetFormFields();
-// pass in user
       dispatch(getCurrentUser(email))
       dispatch(storeGetPopularMovies())
       dispatch(storeGetTopRatedMovies())
       dispatch(storeGetNowPlayingMovies())
       dispatch(storeGetUpcomingMovies())
       navigate("/")
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user. Email already in use")
       } else {
@@ -99,7 +99,7 @@ const SignUp = () => {
             name="confirmPassword"
             value={confirmPassword}
           />
-          <SignUpButton disabled={password !== confirmPassword} type="submit" onClick={handleSubmit} buttonType={BUTTON_TYPE_CLASSES.red}>Sign Up</SignUpButton>
+          <SignUpButton disabled={password !== confirmPassword} type="submit" onClick={() => handleSubmit} buttonType={BUTTON_TYPE_CLASSES.red}>Sign Up</SignUpButton>
         </form>
 
         <LoginPrompt>

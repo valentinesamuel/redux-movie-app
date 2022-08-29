@@ -10,7 +10,7 @@ export const discoverMovies = async () => {
     return response
 }
 
-export const getMovieCredits = async (movie_id) => {
+export const getMovieCredits = async (movie_id:number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data
@@ -42,7 +42,7 @@ export const getNowPlayingMovie = async () => {
     return response
 }
 
-export const getSimilarMovies = async (movie_id) => {
+export const getSimilarMovies = async (movie_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -50,7 +50,7 @@ export const getSimilarMovies = async (movie_id) => {
     return response
 }
 
-export const getMovieImages = async (movie_id) => {
+export const getMovieImages = async (movie_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/images?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -58,7 +58,7 @@ export const getMovieImages = async (movie_id) => {
     return response
 }
 
-export const getMovieVideos = async (movie_id) => {
+export const getMovieVideos = async (movie_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -66,7 +66,7 @@ export const getMovieVideos = async (movie_id) => {
     return response
 }
 
-export const getMovieDetails = async (movie_id) => {
+export const getMovieDetails = async (movie_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -74,7 +74,7 @@ export const getMovieDetails = async (movie_id) => {
     return response
 }
 
-export const getMovieRecommendation = async (movie_id) => {
+export const getMovieRecommendation = async (movie_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -82,7 +82,7 @@ export const getMovieRecommendation = async (movie_id) => {
     return response
 }
 
-export const getMovieReviews = async (movie_id) => {
+export const getMovieReviews = async (movie_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -98,7 +98,7 @@ export const getUpcomingMovies = async () => {
     return response
 }
 
-export const searchMovie = async (query) => {
+export const searchMovie = async (query:string) => {
     const response = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${TMBD_API_KEY}&query=${query}`)
         .then(response => {
             return response.data;
@@ -116,7 +116,7 @@ export const discoverDetails = async () => {
     return response
 }
 
-export const getTvShowsDetails = async (tv_id) => {
+export const getTvShowsDetails = async (tv_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -164,7 +164,7 @@ export const getLatestTvShows = async () => {
     return response
 }
 
-export const getTvShowVideos = async (tv_id) => {
+export const getTvShowVideos = async (tv_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/videos?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -172,7 +172,7 @@ export const getTvShowVideos = async (tv_id) => {
     return response
 }
 
-export const getSimilarTvShow = async (tv_id) => {
+export const getSimilarTvShow = async (tv_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/similar?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -180,7 +180,7 @@ export const getSimilarTvShow = async (tv_id) => {
     return response
 }
 
-export const getTvShowReview = async (tv_id) => {
+export const getTvShowReview = async (tv_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/reviews?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -188,7 +188,7 @@ export const getTvShowReview = async (tv_id) => {
     return response
 }
 
-export const getTvShowRecommendation = async (tv_id) => {
+export const getTvShowRecommendation = async (tv_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/recommendations?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -196,7 +196,7 @@ export const getTvShowRecommendation = async (tv_id) => {
     return response
 }
 
-export const getTvShowSeasonImages = async (tv_id, season_number) => {
+export const getTvShowSeasonImages = async (tv_id: number, season_number: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/season/${season_number}/images?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -204,7 +204,7 @@ export const getTvShowSeasonImages = async (tv_id, season_number) => {
     return response
 }
 
-export const getTvShowSeasonVideos = async (tv_id, season_number) => {
+export const getTvShowSeasonVideos = async (tv_id: number, season_number: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/tv/${tv_id}/season/${season_number}/videos?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -212,7 +212,7 @@ export const getTvShowSeasonVideos = async (tv_id, season_number) => {
     return response
 }
 
-export const getTvShowEpisodeVideos = async (tv_id, season_number, episode_number) => {
+export const getTvShowEpisodeVideos = async (tv_id: number, season_number: number, episode_number: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/${tv_id}/season/${season_number}/episode/${episode_number}/videos?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -220,7 +220,7 @@ export const getTvShowEpisodeVideos = async (tv_id, season_number, episode_numbe
     return response
 }
 
-export const getTvShowEpisodeImages = async (tv_id, season_number, episode_number) => {
+export const getTvShowEpisodeImages = async (tv_id: number, season_number: number, episode_number: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/${tv_id}/season/${season_number}/episode/${episode_number}/images?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;
@@ -230,7 +230,7 @@ export const getTvShowEpisodeImages = async (tv_id, season_number, episode_numbe
 
 
 /*=======MISCELLEANOUS=======*/
-export const getReviewDetail = async (review_id) => {
+export const getReviewDetail = async (review_id: number) => {
     const response = axios.get(`https://api.themoviedb.org/3/review/${review_id}?api_key=${TMBD_API_KEY}`)
         .then(response => {
             return response.data;

@@ -8,8 +8,12 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  User,
+  NextOrObserver,
 } from "firebase/auth";
-import { collection, doc,where, getDoc, getDocs, getFirestore, query, setDoc, writeBatch } from "firebase/firestore";
+import { collection, doc, where, getDoc, getDocs, getFirestore, query, setDoc } from "firebase/firestore";
+import { Movie } from "../features/movie/movie.types";
+import { UserDetails } from "../features/user/user.types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAq0W_85Mup1gZowKexlhNxkHMxVKwRAr4",
@@ -21,7 +25,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
@@ -34,7 +38,7 @@ const githubProvider = new GithubAuthProvider();
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => {
-return  signInWithPopup(auth, googleProvider);
+  return signInWithPopup(auth, googleProvider);
 };
 
 export const signInWithGithubPopup = () => {
@@ -43,16 +47,16 @@ export const signInWithGithubPopup = () => {
 
 export const db = getFirestore();
 
-export const addCollectionAndDocument = async (collectionKey, objectsToAdd) => {
-  const collectionRef = collection(db, collectionKey);
-  const batch = writeBatch(db);
-  objectsToAdd.forEach((object) => {
-    const docRef = doc(collectionRef, object.title.toLowerCase());
-    batch.set(docRef, object);
-  });
-  await batch.commit();
-  console.log("Done!");
-};
+// export const addCollectionAndDocument = async (collectionKey, objectsToAdd) => {
+//   const collectionRef = collection(db, collectionKey);
+//   const batch = writeBatch(db);
+//   objectsToAdd.forEach((object) => {
+//     const docRef = doc(collectionRef, object.title.toLowerCase());
+//     batch.set(docRef, object);
+//   });
+//   await batch.commit();
+//   console.log("Done!");
+// };
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, 'users')
@@ -61,32 +65,27 @@ export const getCategoriesAndDocuments = async () => {
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
 }
 
-export const getUser = async (email) => {
-  // request for user:User
+export const getUser = async (email: string) => {
   const collectionRef = collection(db, 'users')
-  // query where uid == userauth.uid
   const q = query(collectionRef, where("email", "==", email));
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
 
 }
 
-export const getUserMovieList = async (email) => {
-    // request for user:User
+export const getUserMovieList = async (email: string) => {
   const collectionRef = collection(db, 'movies')
-    // query where uid == userauth.uid
   const q = query(collectionRef, where("email", "==", email));
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
 }
 
 export const createUserDocumentFromAuth = async (
-  userAuth,
+  userAuth: User,
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
-  // change userauth.email to uid
-  const userDocRef = doc(db, 'users', userAuth.email);
+  const userDocRef = doc(db, `users/${userAuth.email}`);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -100,20 +99,20 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log("error creating ", error.message);
+      console.log("error creating ", error);
     }
   }
   return userSnapshot;
 };
 
 export const createUserMovieListDocument = async (
-  userAuth,
-  listOfMovies
+  userAuth: UserDetails,
+  listOfMovies: Movie[]
 ) => {
-   // request for user:User
+  // request for user:User
   if (!userAuth) return;
-    // change userauth.email to uid
-  const userDocRef = doc(db, 'movies', userAuth.email);
+  // change userauth.email to uid
+  const userDocRef = doc(db, `users/${userAuth.email}`);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
     const { email } = userAuth;
@@ -123,23 +122,23 @@ export const createUserMovieListDocument = async (
         listOfMovies
       });
     } catch (error) {
-      console.log("error creating ", error.message);
+      console.log("error creating ", error);
     }
   }
   return userSnapshot;
 };
 
-export const createAuthUserWithEmailAndPassword = async (email, password) => {
+export const createAuthUserWithEmailAndPassword = async (email:string, password:string) => {
   if (!email || !password) return;
 
-  return await createUserWithEmailAndPassword(auth, email, password);
+  return  (await createUserWithEmailAndPassword(auth, email, password)).user;
 };
 
-export const signInAuthUserWithEmailAndPassword = async (email, password) => {
-    if (!email || !password) return;
-    return await signInWithEmailAndPassword(auth, email, password)
+export const signInAuthUserWithEmailAndPassword = async (email:string, password:string) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth, email, password)
 }
 
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (callback:NextOrObserver<User>) => onAuthStateChanged(auth, callback);

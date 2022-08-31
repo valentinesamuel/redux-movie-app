@@ -1,19 +1,23 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { UnauthUser, UserDetails, UserState } from "./user.types";
-import { getUser, signInAuthUserWithEmailAndPassword, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
+import { createUserDocumentFromAuth, createUserMovieListDocument, getUser, signInAuthUserWithEmailAndPassword, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
 
 const initialState: UserState = {
     userData: {
         email: '',
         displayName: '',
     },
-    status: "unauth", //'authing' | 'authed' | 'failed' | 'unauth'
+    status: "unauth", //'authing' | 'authed' | 'unauth'
 };
 
 export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async () => {
+
     const response = await signInWithGooglePopup()
+    await createUserDocumentFromAuth(response.user)
+    await createUserMovieListDocument(response.user, [])
     const { email, displayName } = response.user
     return { email, displayName };
+
 })
 
 export const getCurrentUser = createAsyncThunk("userData/getCurrentUser", async (e_mail: string) => {
@@ -29,7 +33,7 @@ export const loginWithEmailandPassword = createAsyncThunk("userData/loginWithEma
     const displayName = response?.user.displayName
     return { email, displayName }
 }
-   
+
 )
 
 export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () => {
@@ -41,8 +45,8 @@ export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPo
     const response = await signInWithGithubPopup();
     const { displayName, email } = response.user;
     // create a user document from auth and also create a usermovielist
-    // await createUserDocumentFromAuth(res!, { displayName });
-    // await createUserMovieListDocument(res!, movieList)
+    // await createUserDocumentFromAuth(response.user, { displayName });
+    // await createUserMovieListDocument(response.user, [])
     return { displayName, email }
 
 })

@@ -84,7 +84,7 @@ export const createUserDocumentFromAuth = async (
   userAuth: User,
   additionalInformation = {}
 ) => {
-  if (!userAuth) return;
+  if (!userAuth) return;  
   const userDocRef = doc(db, `users/${userAuth.email}`);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
@@ -109,16 +109,14 @@ export const createUserMovieListDocument = async (
   userAuth: UserDetails,
   listOfMovies: Movie[]
 ) => {
-  // request for user:User
   if (!userAuth) return;
-  // change userauth.email to uid
-  const userDocRef = doc(db, `users/${userAuth.email}`);
+  const userDocRef = doc(db, `movies/${userAuth.email}`);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
-    const { email } = userAuth;
+    // const { email } = userAuth;
     try {
       await setDoc(userDocRef, {
-        email,
+        // email,
         listOfMovies
       });
     } catch (error) {

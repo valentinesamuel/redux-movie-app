@@ -5,7 +5,7 @@ import Button from "../button/button.component";
 
 
 export const HomeContainer = styled.div`
-
+height:100%;
 `;
 
 export const HeaderSection = styled.header<BackgroundImageProps>`

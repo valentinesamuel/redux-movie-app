@@ -84,7 +84,7 @@ export const createUserDocumentFromAuth = async (
   userAuth: User,
   additionalInformation = {}
 ) => {
-  if (!userAuth) return;  
+  if (!userAuth) return;
   const userDocRef = doc(db, `users/${userAuth.email}`);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
@@ -126,17 +126,17 @@ export const createUserMovieListDocument = async (
   return userSnapshot;
 };
 
-export const createAuthUserWithEmailAndPassword = async (email:string, password:string) => {
+export const createAuthUserWithEmailAndPassword = async (email: string, password: string) => {
   if (!email || !password) return;
 
-  return  (await createUserWithEmailAndPassword(auth, email, password)).user;
+  return (await createUserWithEmailAndPassword(auth, email, password)).user;
 };
 
-export const signInAuthUserWithEmailAndPassword = async (email:string, password:string) => {
+export const signInAuthUserWithEmailAndPassword = async (email: string, password: string) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStateChangedListener = (callback:NextOrObserver<User>) => onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) => onAuthStateChanged(auth, callback);

@@ -1,5 +1,4 @@
 import { ButtonHTMLAttributes, FC } from "react";
-import Spinner from "../loading-spinner/loading-spinner.component";
 import {
   BaseButton,
   BlackButton,
@@ -30,7 +29,7 @@ export type ButtonProps = {
 
 const Button:FC<ButtonProps> = ({ children, buttonType, isLoading, ...otherProps }) => {
   const CustomButton = getButton(buttonType);
-  return <CustomButton {...otherProps} disabled={isLoading ? true : false}>  {isLoading ? <Spinner /> : children}</CustomButton>
+  return <CustomButton {...otherProps} disabled={isLoading ? true : false}>  {isLoading ? 'Loading...' : children}</CustomButton>
 };
 
 export default Button;

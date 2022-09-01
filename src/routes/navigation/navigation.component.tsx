@@ -4,25 +4,27 @@ import AuthNavbar from "../../components/authNavbar/authNavbar.component";
 import { LogoLink, NavContainer, Links, NavLink } from "./navigation.styles";
 import Footer from "../../components/footer/footer.component";
 import { useAppSelector } from "../../utilities/hooks/rootstate";
+import LoadingModal from "../../components/loading-modal/LoadingModal.component";
 
 const Navigation = () => {
   const auth = useAppSelector((state) => state.userSlice)
 
   return (
-   
     <>
+      {auth.status === 'authing' && <LoadingModal message="Logging you in..." />}
+
       <NavContainer>
         <LogoLink to="/">Feems</LogoLink>
-       {auth.status === "authed" ? <Links>
+        {auth.status === "authed" ? <Links>
           <NavLink to="">Home</NavLink>
           <NavLink to="userlist">My List</NavLink>
           <NavLink to="">Tv Shows</NavLink>
         </Links> : ""}
-        {auth.status === "authed" ? <AuthNavbar/> : <Navbar />}
+        {auth.status === "authed" ? <AuthNavbar /> : <Navbar />}
       </NavContainer>
-    
-        <Outlet />
-        <Footer/>
+
+      <Outlet />
+      <Footer />
 
     </>
   );

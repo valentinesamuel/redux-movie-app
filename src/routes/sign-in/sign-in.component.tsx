@@ -11,6 +11,8 @@ import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../.
 import { getMovieList } from "../../features/movie/userMovieList";
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from "../../features/movie/moviesList";
 import { useAppDispatch } from "../../utilities/hooks/appdispatch";
+import { useAppSelector } from "../../utilities/hooks/rootstate";
+import LoadingModal from "../../components/loading-modal/LoadingModal.component";
 
 
 const defaultformFields = {
@@ -18,13 +20,15 @@ const defaultformFields = {
   password: "",
 };
 
+
 const SignIn = () => {
+  const auth = useAppSelector((state) => state.userSlice)
   const dispatch = useAppDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
   const navigate = useNavigate();
 
   const { email, password } = formFields;
-  const registered = false; //use state to manipulate this
+  // const registered = false; use state to manipulate this
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -33,16 +37,15 @@ const SignIn = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // sign in with email and password
     dispatch(getCurrentUser(email))
     dispatch(getMovieList(email))
     dispatch(storeGetPopularMovies())
     dispatch(storeGetTopRatedMovies())
     dispatch(storeGetNowPlayingMovies())
     dispatch(storeGetUpcomingMovies())
-    //find way to navigate to auth-homepage after login
+    setFormFields(defaultformFields)
     navigate("/");
-    // window.location.href = ""
+
   };
 
   const loginWithGoogle = async () => {
@@ -57,7 +60,6 @@ const SignIn = () => {
 
   return (
     <>
-      {registered && <ConfettiSpray />}
       <SignInContainer >
         <h2>Welcome Back😊</h2>
         <form onSubmit={handleSubmit}>
@@ -81,7 +83,7 @@ const SignIn = () => {
             <AuthIcon onClick={loginWithGoogle} src={GoogleIcon} alt="google-sign-in" />
             <AuthIcon src={GithubIcon} alt="github-sign-in" onClick={onLoginWithGithubPopup} />
           </AuthProvider>
-          <SignInButton type="submit" buttonType={BUTTON_TYPE_CLASSES.red}>Sign in</SignInButton>
+          <SignInButton type="submit" buttonType={BUTTON_TYPE_CLASSES.red} isLoading={auth.status === 'authing' ? true : false}>Sign in</SignInButton>
         </form>
         <PasswordRecoveryContainer>
           <form>
@@ -94,6 +96,7 @@ const SignIn = () => {
           <p>New here?</p>
           <SignUpLink to="/signup"> Sign Up</SignUpLink>
         </RegisterationPrompt>
+
       </SignInContainer>
     </>
   );

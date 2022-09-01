@@ -5,11 +5,11 @@ import { HomeContainer } from "./home.styles";
 const Home = () => {
   const auth = useAppSelector((state) => state.userSlice)
   return (
-   
-    <HomeContainer>
-      {auth.status === "authed" ? <AuthHome /> : <LandingPage />}
-      {/* <Footer /> */}
-    </HomeContainer>
+
+      <HomeContainer>
+        {auth.status === "authed" ? <AuthHome /> : <LandingPage />}
+      </HomeContainer>
+ 
   );
 };
 

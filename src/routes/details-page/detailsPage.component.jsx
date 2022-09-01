@@ -7,7 +7,7 @@ import { getMovieCredits, getMovieDetails, getMovieRecommendation, getMovieRevie
 import MovieRow from "../../components/MovieRow/Movierow.component"
 import PeopleRow from "../../components/people-row/PeopleRow.component"
 import ReviewRow from "../../components/review-row/Review-row.component"
-import Spinner from "../../components/loading-spinner/loading-spinner.component"
+import CrossOverSpinner from "../../components/spinners/crossover-spinner/CrossOverSpinner.component"
 
 
 const DetailsPage = () => {
@@ -119,7 +119,7 @@ const DetailsPage = () => {
           <h2>Recommended for you</h2>
           <MovieRow moviesList={recommendedMovies} />
         </Category> 
-      </> : <Spinner/>}
+      </> : <CrossOverSpinner/>}
     </>
   )
 }

@@ -54,7 +54,7 @@ const SignUp = () => {
       navigate("/")
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user.")
+        alert("User Already exists.")
       } else {
         console.error("user creation error: ", error);
       }

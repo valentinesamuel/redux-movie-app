@@ -4,7 +4,6 @@ import FormInput from "../../components/form-input/form-input.component";
 import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, RegisterationPrompt, SignInButton, SignInContainer, SignUpLink } from "./sign-in.styles";
 
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
-import ConfettiSpray from "../../utilities/confetti";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
 import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../../features/user/userSlice";
@@ -12,7 +11,6 @@ import { getMovieList } from "../../features/movie/userMovieList";
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from "../../features/movie/moviesList";
 import { useAppDispatch } from "../../utilities/hooks/appdispatch";
 import { useAppSelector } from "../../utilities/hooks/rootstate";
-import LoadingModal from "../../components/loading-modal/LoadingModal.component";
 
 
 const defaultformFields = {
@@ -37,15 +35,25 @@ const SignIn = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(getCurrentUser(email))
-    dispatch(getMovieList(email))
-    dispatch(storeGetPopularMovies())
-    dispatch(storeGetTopRatedMovies())
-    dispatch(storeGetNowPlayingMovies())
-    dispatch(storeGetUpcomingMovies())
-    setFormFields(defaultformFields)
-    navigate("/");
 
+    try {
+      dispatch(getCurrentUser(email))
+      dispatch(getMovieList(email))
+      dispatch(storeGetPopularMovies())
+      dispatch(storeGetTopRatedMovies())
+      dispatch(storeGetNowPlayingMovies())
+      dispatch(storeGetUpcomingMovies())
+      setFormFields(defaultformFields)
+    } catch (error: any) {
+      if (error.code === "auth/user-not-found") {
+        alert("User not found.")
+      } else {
+        alert(error);
+      }
+    }
+    
+    navigate("/")
+  
   };
 
   const loginWithGoogle = async () => {

@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import FormInput from '../../components/form-input/form-input.component';
-import { getCurrentUser } from '../../features/user/userSlice';
+import { getCurrentUser, startLoading, stopLoading } from '../../features/user/userSlice';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
 import { LoginPrompt, SignUpButton, SignUpContainer, SignInLink } from './sign-up.styles';
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from '../../features/movie/moviesList';
@@ -41,26 +41,28 @@ const SignUp = () => {
     }
 
     try {
+      dispatch(startLoading())
       const res = await createAuthUserWithEmailAndPassword(email, password);
-      //get user pass it into createUserDocumentFromAuth
       await createUserDocumentFromAuth(res!, { displayName });
       await createUserMovieListDocument(res!, movieList)
       resetFormFields();
       dispatch(getCurrentUser(email))
-      dispatch(storeGetPopularMovies())
-      dispatch(storeGetTopRatedMovies())
-      dispatch(storeGetNowPlayingMovies())
-      dispatch(storeGetUpcomingMovies())
-      navigate("/")
+      // dispatch(storeGetPopularMovies())
+      // dispatch(storeGetTopRatedMovies())
+      // dispatch(storeGetNowPlayingMovies())
+      // dispatch(storeGetUpcomingMovies())
+      // navigate("/")
+      dispatch(stopLoading())
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         alert("User Already exists.")
       } else {
-        console.error("user creation error: ", error);
+        alert(error);
       }
     }
-
+    navigate("/")
   };
+
 
   return (
     <>

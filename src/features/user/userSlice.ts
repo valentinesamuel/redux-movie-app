@@ -8,7 +8,10 @@ const initialState: UserState = {
         displayName: '',
     },
     status: "unauth", //'authing' | 'authed' | 'unauth'
+    loading: false
 };
+
+
 
 export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async () => {
 
@@ -53,7 +56,15 @@ export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPo
 export const userSlice = createSlice({
     name: 'userData',
     initialState,
-    reducers: {},
+    reducers: {
+        startLoading: (state) => {
+            state.loading = true
+        },
+        stopLoading: (state) => {
+            state.loading = false
+        }
+
+    },
     extraReducers(builder) {
         builder.addCase(loginWithGooglePopup.fulfilled, (state, action: PayloadAction<UserDetails>) => {
             state.userData = action.payload;
@@ -81,5 +92,7 @@ export const userSlice = createSlice({
         })
     }
 })
+
+export const { startLoading, stopLoading } = userSlice.actions
 
 export default userSlice.reducer

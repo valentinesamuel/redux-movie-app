@@ -1,8 +1,9 @@
-import "./spinner.css"
+import { SpinnerCircle, SpinnerContainer } from "./circular-spinner.styles";
+
 const Spinner = () => (
-    <div className="sk-cube-grid">
-        <span className="loader"></span>
-    </div>
+    <SpinnerContainer>
+        <SpinnerCircle></SpinnerCircle>
+    </SpinnerContainer>
 );
 
 export default Spinner;

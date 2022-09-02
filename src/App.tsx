@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import Navigation from "./routes/navigation/navigation.component";
+import { lazy, Suspense } from "react";
 
-import Home from "./routes/home/home.component";
-import SignUp from "./routes/sign-up/sign-up.component";
-import DetailsPage from "./routes/details-page/detailsPage.component";
-import UserMovies from "./routes/user-movies/UserMovies.component";
-import SignIn from "./routes/sign-in/sign-in.component";
-
+import Spinner from "./components/spinners/circular-spinner/circular-spinner.component";
+const Home = lazy(() => import('./routes/home/home.component'))
+const Navigation = lazy(() => import('./routes/navigation/navigation.component'))
+const SignUp = lazy(() => import('./routes/sign-up/sign-up.component'))
+const DetailsPage = lazy(() => import('./routes/details-page/detailsPage.component'))
+const UserMovies = lazy(() => import('./routes/user-movies/UserMovies.component'))
+const SignIn = lazy(() => import('./routes/home/home.component'))
 
 
 function App() {
 
   return (
+    <Suspense fallback={<Spinner/>}>
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
@@ -21,6 +23,7 @@ function App() {
         <Route path="userlist" element={<UserMovies />}/>
       </Route>
     </Routes>
+    </Suspense>
   );
 }
 

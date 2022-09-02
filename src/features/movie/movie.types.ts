@@ -46,7 +46,6 @@ export type MovieListInitialState = {
 // create a movie list type
 export type UserMovieList = {
     listOfMovies: Movie[] | undefined | null | []
-    email?: string
     feedbackMessage?:boolean
 }
 

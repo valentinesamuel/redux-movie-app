@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { UnauthUser, UserDetails, UserState } from "./user.types";
 import { createUserDocumentFromAuth, createUserMovieListDocument, getUser, signInAuthUserWithEmailAndPassword, signInWithGithubPopup, signInWithGooglePopup, signOutUser } from "../../utilities/firebase";
+import { getMovieList } from "../movie/userMovieList";
 
 const initialState: UserState = {
     userData: {
@@ -13,12 +14,12 @@ const initialState: UserState = {
 
 
 
-export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async () => {
-
+export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async (_, { dispatch }) => {
     const response = await signInWithGooglePopup()
-    await createUserDocumentFromAuth(response.user)
-    await createUserMovieListDocument(response.user, [])
     const { email, displayName } = response.user
+    await createUserDocumentFromAuth(response.user);
+    await createUserMovieListDocument({ email, displayName }, [])
+    dispatch(getMovieList(email!))
     return { email, displayName };
 
 })
@@ -44,11 +45,12 @@ export const logCurrentUserOut = createAsyncThunk("userData/logOut", async () =>
     return response;
 })
 
-export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async () => {
+export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPopup", async (_, { dispatch }) => {
     const response = await signInWithGithubPopup();
     const { displayName, email } = response.user;
     await createUserDocumentFromAuth(response.user);
     await createUserMovieListDocument(response.user, [])
+    dispatch(getMovieList(email!))
     return { displayName, email }
 
 })

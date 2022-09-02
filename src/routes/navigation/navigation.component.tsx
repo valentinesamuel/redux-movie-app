@@ -11,7 +11,7 @@ const Navigation = () => {
 
   return (
     <>
-      {(auth.status === 'authing' || auth.loading === true) && <LoadingModal message="Logging you in..." />}
+      {(auth.status === 'authing' || auth.loading === true) && <LoadingModal message="We are working on it..." />}
 
       <NavContainer>
         <LogoLink to="/">Feems</LogoLink>

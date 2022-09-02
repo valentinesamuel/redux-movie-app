@@ -217,3 +217,18 @@ h2{
 margin-left:2%;
 
 `
+
+export const ErrorContainer = styled.div`
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin:20% 0;
+`
+
+export const Message = styled.p`
+font-size: ${FONTSIZES.h5};
+margin-top: 8%;
+`

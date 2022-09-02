@@ -6,7 +6,7 @@ import { AuthIcon, AuthProvider, PasswordRecoveryContainer, RecoverPassword, Reg
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 import GoogleIcon from '../../assets/icons/google.svg';
 import GithubIcon from '../../assets/icons/github.svg';
-import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup } from "../../features/user/userSlice";
+import { getCurrentUser, loginWithGooglePopup, loginWithGithubPopup, startLoading, stopLoading } from "../../features/user/userSlice";
 import { getMovieList } from "../../features/movie/userMovieList";
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from "../../features/movie/moviesList";
 import { useAppDispatch } from "../../utilities/hooks/appdispatch";
@@ -24,7 +24,6 @@ const SignIn = () => {
   const dispatch = useAppDispatch()
   const [formFields, setFormFields] = useState(defaultformFields);
   const navigate = useNavigate();
-
   const { email, password } = formFields;
   // const registered = false; use state to manipulate this
 
@@ -37,13 +36,15 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
+      dispatch(startLoading())
       dispatch(getCurrentUser(email))
-      dispatch(getMovieList(email))
       dispatch(storeGetPopularMovies())
       dispatch(storeGetTopRatedMovies())
       dispatch(storeGetNowPlayingMovies())
       dispatch(storeGetUpcomingMovies())
       setFormFields(defaultformFields)
+      dispatch(getMovieList(email))
+      dispatch(stopLoading())
     } catch (error: any) {
       if (error.code === "auth/user-not-found") {
         alert("User not found.")
@@ -51,18 +52,21 @@ const SignIn = () => {
         alert(error);
       }
     }
-    
+
     navigate("/")
-  
+
   };
 
   const loginWithGoogle = async () => {
-    dispatch(loginWithGooglePopup());
+   dispatch(loginWithGooglePopup());
 
+
+    navigate("/")
   }
 
   const onLoginWithGithubPopup = async () => {
     dispatch(loginWithGithubPopup());
+    navigate("/")
 
   }
 

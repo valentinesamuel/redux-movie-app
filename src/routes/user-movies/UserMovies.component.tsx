@@ -1,32 +1,33 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { UserMoviesContainer, NoMoviesText, CardContainer, MovieImage, Details, MovieTitle, Stats, Description, Rating, Remove, ButtonContainer, MovieListContainer } from './UserMovies.styles'
 import StarIcon from "../../assets/icons/star.svg"
 import removeIcon from '../../assets/icons/remove.svg'
-import { clearMovieList, removeMovieFromList } from '../../features/movie/userMovieList'
+import { clearMovieList, removeMovieFromList, saveMovieList } from '../../features/movie/userMovieList'
 import Button, { BUTTON_TYPE_CLASSES } from '../../components/button/button.component'
+import { useAppSelector } from '../../utilities/hooks/rootstate'
+import { useAppDispatch } from '../../utilities/hooks/appdispatch'
+import { Movie } from '../../features/movie/movie.types'
 
 const UserMovies = () => {
-    const dispatch = useDispatch()
-    const movies = useSelector(state => state.userMovieListSlice.movieList)
-    const username = useSelector((state) => state.userSlice.userData)
+    const dispatch = useAppDispatch()
+    const movies = useAppSelector(state => state.userMovieListSlice.listOfMovies)
+    const auth = useAppSelector((state) => state.userSlice.userData)
 
-    const removeFromUserMovieList = (movie) => {
+    const removeFromUserMovieList = (movie: Movie) => {
         dispatch(removeMovieFromList(movie))
     }
 
     const saveListToDatabase = () => {
-        console.log("save to db!!");
+        dispatch(saveMovieList({ auth, movies }))
     }
 
     const clearUserMovieList = () => {
         // eslint-disable-next-line no-restricted-globals
-        if (confirm(`${username.displayName}, are you sure you want to clear your list?`)) {
+        if (confirm(`${auth.displayName}, are you sure you want to clear your list?`)) {
             dispatch(clearMovieList())
         }
     }
 
-    const goToMovie = (movie_id) => {
+    const goToMovie = (movie_id: number) => {
         window.location.href = `/${movie_id}`
     }
     return (

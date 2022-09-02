@@ -6,7 +6,6 @@ import { getCurrentUser, startLoading, stopLoading } from '../../features/user/u
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
 import { LoginPrompt, SignUpButton, SignUpContainer, SignInLink } from './sign-up.styles';
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from '../../features/movie/moviesList';
-import { useAppSelector } from '../../utilities/hooks/rootstate';
 import { useAppDispatch } from '../../utilities/hooks/appdispatch';
 import { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 
@@ -21,7 +20,6 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const navigate = useNavigate();
   const { email, password, confirmPassword, displayName } = formFields;
-  const movieList = useAppSelector((state) => state.userMovieListSlice.listOfMovies)
   const dispatch = useAppDispatch()
 
   const resetFormFields = () => {
@@ -44,14 +42,14 @@ const SignUp = () => {
       dispatch(startLoading())
       const res = await createAuthUserWithEmailAndPassword(email, password);
       await createUserDocumentFromAuth(res!, { displayName });
-      await createUserMovieListDocument(res!, movieList)
+      await createUserMovieListDocument(res!, [])
       resetFormFields();
       dispatch(getCurrentUser(email))
-      // dispatch(storeGetPopularMovies())
-      // dispatch(storeGetTopRatedMovies())
-      // dispatch(storeGetNowPlayingMovies())
-      // dispatch(storeGetUpcomingMovies())
-      // navigate("/")
+      dispatch(storeGetPopularMovies())
+      dispatch(storeGetTopRatedMovies())
+      dispatch(storeGetNowPlayingMovies())
+      dispatch(storeGetUpcomingMovies())
+      navigate("/")
       dispatch(stopLoading())
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {

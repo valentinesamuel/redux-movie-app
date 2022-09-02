@@ -1,6 +1,6 @@
 import { useLocation, useParams } from "react-router-dom"
 import Button, { BUTTON_TYPE_CLASSES } from "../../components/button/button.component"
-import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title, Category, OutlineTitle } from "./detailsPage.styles"
+import { DetailsContainer, AdultContent, ButtonContainer, Description, GenreContainer, PictureSlides, StatsContainer, Tagline, Title, Category, OutlineTitle, ErrorContainer, Message } from "./detailsPage.styles"
 import Star from "../../assets/icons/star.svg"
 import { useEffect, useState } from "react"
 import { getMovieCredits, getMovieDetails, getMovieRecommendation, getMovieReviews, getSimilarMovies } from "../../utilities/tmdb"
@@ -8,18 +8,24 @@ import MovieRow from "../../components/MovieRow/Movierow.component"
 import PeopleRow from "../../components/people-row/PeopleRow.component"
 import ReviewRow from "../../components/review-row/Review-row.component"
 import CrossOverSpinner from "../../components/spinners/crossover-spinner/CrossOverSpinner.component"
+import { useAppDispatch } from "../../utilities/hooks/appdispatch"
+import { hideFeedbackMessage, showFeedbackMessage } from "../../features/movie/userMovieList"
+import Prompt from "../../components/prompt/Prompt.component"
+import { useSelector } from "react-redux"
 
 
 const DetailsPage = () => {
   const { movieId } = useParams()
   const location = useLocation()
+  const dispatch = useAppDispatch()
   const [detailMovie, setDetailMovie] = useState({})
   const [recommendedMovies, setRecommendedMovies] = useState([])
   const [similarMovies, setSimilarMovies] = useState([])
   const [movieCredit, setMovieCredit] = useState({})
   const [movieReview, setMovieReviews] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  
+  const feedbackControl = useSelector(state => state.userMovieListSlice.feedbackMessage)
+
 
   useEffect(() => {
     let isApiSubscribed = true
@@ -37,7 +43,6 @@ const DetailsPage = () => {
         setRecommendedMovies(recommendedRes.results)
         setSimilarMovies(similarRes.results)
         setMovieReviews(movieReviewRes.results)
-        console.log("fetch");
         setIsLoading(false)
       }
     }
@@ -49,9 +54,14 @@ const DetailsPage = () => {
     }
   }, [movieId, location])
 
+  const addToUserList = (movie) => {
+    dispatch(showFeedbackMessage())
+    setTimeout(() => dispatch(hideFeedbackMessage()), 2000);
+  }
 
   return (
     <>
+      { feedbackControl === true && <Prompt message={"Added to your list"} />}
       {!isLoading ? <>
         <DetailsContainer imageUrl={`https://image.tmdb.org/t/p/original${detailMovie.backdrop_path}`}>
           {detailMovie.tagline && <Tagline>
@@ -86,8 +96,8 @@ const DetailsPage = () => {
           </StatsContainer>
 
           <ButtonContainer>
-            <Button className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} >Watch Now</Button>
-            <Button buttonType={BUTTON_TYPE_CLASSES.white} >Add To List</Button>
+            <Button className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.red} onClick={() => alert("Sorry, this API does not support videos for now")} >Watch Now</Button>
+            <Button buttonType={BUTTON_TYPE_CLASSES.white} onClick={() => addToUserList(detailMovie)}>Add To List</Button>
           </ButtonContainer>
 
           <PictureSlides>
@@ -118,8 +128,8 @@ const DetailsPage = () => {
         <Category>
           <h2>Recommended for you</h2>
           <MovieRow moviesList={recommendedMovies} />
-        </Category> 
-      </> : <CrossOverSpinner/>}
+        </Category>
+      </> : <ErrorContainer><CrossOverSpinner /><Message>Loading Movie</Message></ErrorContainer>}
     </>
   )
 }

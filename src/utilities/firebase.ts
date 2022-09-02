@@ -58,8 +58,8 @@ export const db = getFirestore();
 //   console.log("Done!");
 // };
 
-export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, 'users')
+export const getCategoriesAndDocuments = async (email:any) => {
+  const collectionRef = collection(db, `movies`)
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
@@ -99,11 +99,29 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log("error creating ", error);
+      alert(error);
     }
   }
   return userSnapshot;
 };
+
+export const saveUserMovieList = async (listOfMovies:Movie[], email:string) => {
+  if (!email && !listOfMovies) return;
+  
+  const movieDocRef = doc(db, `movies/${email}`);
+  const movieSnapShot = await getDoc(movieDocRef);
+  if (movieSnapShot.exists()) {
+    try {
+      await setDoc(movieDocRef, {
+        email,
+        listOfMovies
+      })
+    } catch (error) {
+      alert(error);
+    }
+  }
+  return movieSnapShot
+}
 
 export const createUserMovieListDocument = async (
   userAuth: UserDetails,
@@ -113,10 +131,10 @@ export const createUserMovieListDocument = async (
   const userDocRef = doc(db, `movies/${userAuth.email}`);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
-    // const { email } = userAuth;
+    const { email } = userAuth;
     try {
       await setDoc(userDocRef, {
-        // email,
+        email,
         listOfMovies
       });
     } catch (error) {

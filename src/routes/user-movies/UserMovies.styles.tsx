@@ -93,7 +93,7 @@ img{
 
 export const MovieTitle = styled.h3`
 font-size:1.5rem;
-
+cursor:pointer;
 display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

@@ -29,9 +29,10 @@ const Header = () => {
     }
 
     return (
+<>
+            {feedbackControl === true && <Prompt message={"Added to your list"} />}
 
         <HeaderContainer imageUrl={`https://image.tmdb.org/t/p/original${movies.backdrop_path}`}>
-            {feedbackControl === true && <Prompt message={"Added to user's list"} />}
                 <Tagline>
                 {movies.tagline ? movies.tagline : null}
                 </Tagline>
@@ -77,7 +78,7 @@ const Header = () => {
 
             </HeaderContainer>
   
-
+        </>
     )
 }
 

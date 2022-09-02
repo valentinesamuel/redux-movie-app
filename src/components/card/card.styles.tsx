@@ -3,7 +3,7 @@ import { FONTWEIGHT } from "../../utilities/designTokens";
 
 export const CardContainer = styled.div`
 position:relative;
-min-width:10rem;
+min-width:14rem;
 margin: 0 4% 0 0;
 border-radius:5px;
 padding: 1%;

@@ -1,5 +1,4 @@
 import MovieRow from '../MovieRow/Movierow.component'
-import { useDispatch, useSelector } from 'react-redux'
 import { Category, FeedContainer } from './Feed.styles'
 import { useEffect } from 'react'
 import { storeGetUpcomingMovies, storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies } from '../../features/movie/moviesList'

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { clearMovieList } from '../../features/movie/userMovieList'
 import { logCurrentUserOut } from '../../features/user/userSlice'
+import { useAppDispatch } from '../../utilities/hooks/appdispatch'
 import { BUTTON_TYPE_CLASSES } from '../button/button.component'
 import { HamMenuBody, HamMenuContainer, NavLink, SignOutButton } from './HamMenu.styles'
 
 const HamMenu = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
 
@@ -31,7 +31,7 @@ const HamMenu = () => {
             {isOpen && <HamMenuBody>
                 <NavLink to="">Home</NavLink>
                 <NavLink to="userlist">My List</NavLink>
-                <NavLink to="">Tv Shows</NavLink>
+                {/* <NavLink to="">Tv Shows</NavLink> */}
                 <SignOutButton onClick={onLogOut} buttonType={BUTTON_TYPE_CLASSES.red}>
                     Sign Out
                 </SignOutButton>

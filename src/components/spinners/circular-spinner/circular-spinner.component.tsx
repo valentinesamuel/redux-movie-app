@@ -1,7 +1,7 @@
 import "./spinner.css"
 const Spinner = () => (
     <div className="sk-cube-grid">
-        <span class="loader"></span>
+        <span className="loader"></span>
     </div>
 );
 

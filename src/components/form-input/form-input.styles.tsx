@@ -2,9 +2,12 @@ import styled, { css } from "styled-components";
 import {
   BORDERRADIUS,
   COLORS,
-
   FONTSIZES,
 } from "../../utilities/designTokens";
+
+type FormInputLabelProps = {
+  shrink? : Boolean
+}
 
 const shrinkLabelStyles = css`
   top: -4px;
@@ -20,7 +23,7 @@ export const FormGroup = styled.div`
   }
 `;
 
-export const FormInputLabel = styled.label`
+export const FormInputLabel = styled.label<FormInputLabelProps>`
   position: absolute;
   left: 1rem;
   font-size: ${FONTSIZES.p};

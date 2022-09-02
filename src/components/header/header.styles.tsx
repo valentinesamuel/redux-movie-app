@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { COLORS, FONTSIZES } from "../../utilities/designTokens";
 
-
-export const HeaderContainer = styled.div`
+type HeaderContainerProps = {
+imageUrl: string
+}
+export const HeaderContainer = styled.div<HeaderContainerProps>`
 position:relative;
 padding:5% 0 2% 4%;
 height:100%;
@@ -182,4 +184,9 @@ background: transparent;
 
   @media only screen and (max-width: 50rem) {
   }
+`
+
+export const Message = styled.p`
+font-size: ${FONTSIZES.h5};
+margin-top: 8%;
 `

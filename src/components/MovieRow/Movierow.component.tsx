@@ -1,7 +1,13 @@
+import { FC } from 'react'
+import { Movie } from '../../features/movie/movie.types'
 import Card from '../card/card.component'
 import { MovieRowContainer } from './Movierow.styles'
 
-const MovieRow = ({ moviesList }) => {
+type MovieRowProps = {
+    moviesList: Movie[]
+}
+
+const MovieRow:FC<MovieRowProps> = ({ moviesList }) => {
 
     return (
         <MovieRowContainer>

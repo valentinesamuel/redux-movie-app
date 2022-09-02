@@ -55,6 +55,7 @@ const DetailsPage = () => {
   }, [movieId, location])
 
   const addToUserList = (movie) => {
+    // add movie
     dispatch(showFeedbackMessage())
     setTimeout(() => dispatch(hideFeedbackMessage()), 2000);
   }

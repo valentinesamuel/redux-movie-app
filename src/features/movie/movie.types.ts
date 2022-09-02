@@ -5,8 +5,8 @@ export type Movie = {
     genres?: {
         id: number,
         name: string
-    },
-    genre_ids: number[]
+    }[],
+    genre_ids?: number[]
     id: number,
     original_language: string,
     original_title?: string,
@@ -17,7 +17,7 @@ export type Movie = {
     spoken_languages?: {
         iso_639: string,
         name: string
-    }
+    }[],
     status?: string,
     tagline?: string | null,
     vote_average: number,
@@ -41,6 +41,9 @@ export type MovieListInitialState = {
     }
 }
 
+export type Person = {
+    
+}
 
 
 // create a movie list type

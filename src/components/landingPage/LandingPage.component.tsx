@@ -29,8 +29,8 @@ const LandingPage = () => {
                 <WatchActionsContainer>
                     <WatchAction>
                         <RedText>
-                            <Icon>
-                                <FaTv className="red-icon" size="sm" />
+                            <Icon >
+                                <FaTv className="red-icon" size="sm" style={{backgroundColor: 'red'}}/>
                             </Icon>
                         </RedText>
                         <h2>Watch on your TV</h2>
@@ -42,7 +42,7 @@ const LandingPage = () => {
                     <WatchAction>
                         <RedText>
                             <Icon>
-                                <FaTv className="red-icon" size="sm" />
+                                <FaTv className="red-icon" size="sm" style={{ backgroundColor: 'red' }} />
                             </Icon>
                         </RedText>
                         <h2>Watch instantly</h2>
@@ -51,12 +51,12 @@ const LandingPage = () => {
                     <WatchAction>
                         <RedText>
                             <Icon>
-                                <FaTv className="red-icon" size="sm" />
+                                <FaTv className="red-icon" size="sm" style={{ backgroundColor: 'red' }} />
                             </Icon>
                         </RedText>
                         <h2>Watch on your TV</h2>
                         <p>
-                            Watch right on <RedText>Feems.com</RedText>
+                            Watch right on <RedText>https://feemflix.netlify.app/</RedText>
                         </p>
                     </WatchAction>
                 </WatchActionsContainer>

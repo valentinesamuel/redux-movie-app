@@ -11,8 +11,7 @@
 
 
 
-.red-icon > *{
+.red-icon {
   color: red;
-  width: fit-content;
-  
+  width: fit-content;  
 }

@@ -20,7 +20,7 @@ const Navigation = () => {
         {auth.status === "authed" ? <Links>
           <NavLink to="">Home</NavLink>
           <NavLink to="userlist">My List</NavLink>
-          <NavLink to="">Tv Shows</NavLink>
+          {/* <NavLink to="">Tv Shows</NavLink> */}
         </Links> : ""}
         {auth.status === "authed" ? <AuthNavbar /> : <Navbar />}
       </NavContainer>

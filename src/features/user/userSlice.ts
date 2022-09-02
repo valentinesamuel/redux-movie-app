@@ -9,7 +9,8 @@ const initialState: UserState = {
         displayName: '',
     },
     status: "unauth", //'authing' | 'authed' | 'unauth'
-    loading: false
+    loading: false,
+    confetti: false
 };
 
 
@@ -64,6 +65,12 @@ export const userSlice = createSlice({
         },
         stopLoading: (state) => {
             state.loading = false
+        },
+        openConfetti: (state) => {
+            state.confetti = true
+        },
+        closeConfetti: (state) => {
+            state.confetti = false
         }
     },
     extraReducers(builder) {
@@ -103,6 +110,6 @@ export const userSlice = createSlice({
     }
 })
 
-export const { startLoading, stopLoading } = userSlice.actions
+export const { startLoading, stopLoading, closeConfetti, openConfetti } = userSlice.actions
 
 export default userSlice.reducer

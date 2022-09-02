@@ -9,27 +9,29 @@ import PeopleRow from "../../components/people-row/PeopleRow.component"
 import ReviewRow from "../../components/review-row/Review-row.component"
 import CrossOverSpinner from "../../components/spinners/crossover-spinner/CrossOverSpinner.component"
 import { useAppDispatch } from "../../utilities/hooks/appdispatch"
-import { hideFeedbackMessage, showFeedbackMessage } from "../../features/movie/userMovieList"
+import { addMovieToList, hideFeedbackMessage, showFeedbackMessage } from "../../features/movie/userMovieList"
 import Prompt from "../../components/prompt/Prompt.component"
-import { useSelector } from "react-redux"
+import { initialMovieDetail, movieCreditInitialValue, movieListInitialValue, MovieReview } from "./initial-valvues"
+import { useAppSelector } from "../../utilities/hooks/rootstate"
+import { Movie } from "../../features/movie/movie.types"
 
 
 const DetailsPage = () => {
   const { movieId } = useParams()
   const location = useLocation()
   const dispatch = useAppDispatch()
-  const [detailMovie, setDetailMovie] = useState({})
-  const [recommendedMovies, setRecommendedMovies] = useState([])
-  const [similarMovies, setSimilarMovies] = useState([])
-  const [movieCredit, setMovieCredit] = useState({})
-  const [movieReview, setMovieReviews] = useState([])
+  const [detailMovie, setDetailMovie] = useState(initialMovieDetail)
+  const [recommendedMovies, setRecommendedMovies] = useState(movieListInitialValue.results)
+  const [similarMovies, setSimilarMovies] = useState(movieListInitialValue.results)
+  const [movieReview, setMovieReviews] = useState(MovieReview.results)
+  const [movieCredit, setMovieCredit] = useState(movieCreditInitialValue)
   const [isLoading, setIsLoading] = useState(true)
-  const feedbackControl = useSelector(state => state.userMovieListSlice.feedbackMessage)
+  const feedbackControl = useAppSelector(state => state.userMovieListSlice.feedbackMessage)
 
 
   useEffect(() => {
     let isApiSubscribed = true
-    const getDetails = async (id) => {
+    const getDetails = async (id: number) => {
       const res = await getMovieDetails(id)
       const recommendedRes = await getMovieRecommendation(id)
       const similarRes = await getSimilarMovies(id)
@@ -47,22 +49,22 @@ const DetailsPage = () => {
       }
     }
 
-    getDetails(movieId)
+    getDetails(Number(movieId))
 
     return () => {
       isApiSubscribed = false
     }
   }, [movieId, location])
 
-  const addToUserList = (movie) => {
-    // add movie
+  const addToUserList = (movie:Movie) => {
+    dispatch(addMovieToList(movie))
     dispatch(showFeedbackMessage())
     setTimeout(() => dispatch(hideFeedbackMessage()), 2000);
   }
 
   return (
     <>
-      { feedbackControl === true && <Prompt message={"Added to your list"} />}
+      {feedbackControl === true && <Prompt message={"Added to your list"} />}
       {!isLoading ? <>
         <DetailsContainer imageUrl={`https://image.tmdb.org/t/p/original${detailMovie.backdrop_path}`}>
           {detailMovie.tagline && <Tagline>

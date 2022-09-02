@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import FormInput from '../../components/form-input/form-input.component';
-import { getCurrentUser, startLoading, stopLoading } from '../../features/user/userSlice';
+import { closeConfetti, getCurrentUser, openConfetti, startLoading, stopLoading } from '../../features/user/userSlice';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, createUserMovieListDocument } from '../../utilities/firebase';
 import { LoginPrompt, SignUpButton, SignUpContainer, SignInLink } from './sign-up.styles';
 import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies, storeGetUpcomingMovies } from '../../features/movie/moviesList';
@@ -51,11 +51,16 @@ const SignUp = () => {
       dispatch(storeGetUpcomingMovies())
       navigate("/")
       dispatch(stopLoading())
+      dispatch(openConfetti())
+      setTimeout(() => dispatch(closeConfetti()), 5000)
+      
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         alert("User Already exists.")
+        dispatch(stopLoading())
       } else {
         alert(error);
+        dispatch(stopLoading())
       }
     }
     navigate("/")

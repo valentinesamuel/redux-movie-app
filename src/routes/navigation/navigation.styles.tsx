@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components"; 
+import styled from "styled-components";
 import { COLORS, FONT, FONTWEIGHT, } from "../../utilities/designTokens";
 
 export const Nav = styled.div`
@@ -65,3 +65,4 @@ export const NavLink = styled(Link)`
 export const Links = styled.div`
 margin: 0 0;
 `;
+

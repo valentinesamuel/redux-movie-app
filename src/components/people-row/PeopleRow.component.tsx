@@ -1,8 +1,14 @@
+import { FC } from 'react'
+import { Person } from '../../features/movie/movie.types'
 import PersonCard from '../person-card/PersonCard.component'
 import { PeopleRowContainer } from './People.styles'
 
-const PeopleRow = ({ people }) => {
-    console.log(people)
+type PeopleRowProps = {
+    people: Person[]
+}
+
+const PeopleRow: FC<PeopleRowProps> = ({ people }) => {
+ 
     return (
         <PeopleRowContainer>
             {people && people.map(person => {

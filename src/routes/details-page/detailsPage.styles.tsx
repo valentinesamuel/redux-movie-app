@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { COLORS, FONTSIZES } from "../../utilities/designTokens";
 
+type DetailsPageProps = {
+  imageUrl: string
+}
 
-export const DetailsContainer = styled.div`
+export const DetailsContainer = styled.div<DetailsPageProps>`
 position:relative;
 padding:5% 0 2% 4%;
 height:100%;

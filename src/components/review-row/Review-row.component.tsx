@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { Review } from '../../features/movie/movie.types'
 import ReviewCard from '../review-card/ReviewCard.component'
 import { ReviewRowContainer } from './Review-row.styles'
 
-const ReviewRow = ({ reviews }) => {
+type ReviewRowProps = {
+    reviews: Review[]
+}
+
+const ReviewRow:FC<ReviewRowProps> = ({ reviews }) => {
+
     return (
         <ReviewRowContainer>
             {reviews && reviews.map((review) => {
-                return <ReviewCard key={review.id} review={review} />
+                return <ReviewCard key={review.author} review={review} />
             })}
         </ReviewRowContainer>
     )

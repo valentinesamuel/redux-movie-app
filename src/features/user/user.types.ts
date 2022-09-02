@@ -7,7 +7,8 @@ export type UserDetails = {
 export type UserState = {
     userData: UserDetails,
     status: string,
-    loading:boolean
+    loading: boolean
+    confetti? : boolean
 }
 
 export type UnauthUser = {

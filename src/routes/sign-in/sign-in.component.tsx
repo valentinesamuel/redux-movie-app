@@ -44,6 +44,7 @@ const SignIn = () => {
       setFormFields(defaultformFields)
       dispatch(getMovieList(email))
       dispatch(stopLoading())
+     
     } catch (error: any) {
       if (error.code === "auth/user-not-found") {
         alert("User not found.")

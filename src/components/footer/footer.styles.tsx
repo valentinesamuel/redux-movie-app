@@ -61,7 +61,6 @@ export const ExternalLink = styled.a`
 cursor:pointer;
 
   &:hover{
-
     text-decoration:underline;
   }
 `;

@@ -79,7 +79,7 @@ export const WatchActionsContainer = styled.div`
 `;
 export const WatchAction = styled.div`
   text-align: center;
-  width: 15%;
+  width: 25%;
     background-color:white;
 
   padding: 5% 0 0 0;
@@ -89,7 +89,7 @@ export const WatchAction = styled.div`
     color: ${COLORS.black};
     margin-top: 6%;
       background-color:white;
-
+width:100%;
     line-height: 1.3125rem;
   }
 

@@ -7,7 +7,7 @@ const Navigation = lazy(() => import('./routes/navigation/navigation.component')
 const SignUp = lazy(() => import('./routes/sign-up/sign-up.component'))
 const DetailsPage = lazy(() => import('./routes/details-page/detailsPage.component'))
 const UserMovies = lazy(() => import('./routes/user-movies/UserMovies.component'))
-const SignIn = lazy(() => import('./routes/home/home.component'))
+const SignIn = lazy(() => import('./routes/sign-in/sign-in.component'))
 
 
 function App() {

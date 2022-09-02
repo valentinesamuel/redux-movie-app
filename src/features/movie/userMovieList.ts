@@ -12,7 +12,6 @@ const initialState: UserMovieListInitialState = {
 
 export const getMovieList = createAsyncThunk("movieList/getUserMovieList", async (email: string) => {
     const response = await getUserMovieList(email);
-    console.log('getting', response)
     return response[0].listOfMovies
 })
 

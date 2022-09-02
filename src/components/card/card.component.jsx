@@ -10,7 +10,6 @@ const Card = ({ movie }) => {
 
 
   const addToUserMovieList = (movie) => {
-    console.log(movie);
     dispatch(addMovieToList(movie))
     dispatch(showFeedbackMessage())
     setTimeout(()=>dispatch(hideFeedbackMessage()), 2000);

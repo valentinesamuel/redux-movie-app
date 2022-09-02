@@ -17,6 +17,7 @@ const initialState: UserState = {
 export const loginWithGooglePopup = createAsyncThunk("userData/loginWithGooglePopup", async (_, { dispatch }) => {
     const response = await signInWithGooglePopup()
     const { email, displayName } = response.user
+
     await createUserDocumentFromAuth(response.user);
     await createUserMovieListDocument({ email, displayName }, [])
     dispatch(getMovieList(email!))
@@ -49,10 +50,9 @@ export const loginWithGithubPopup = createAsyncThunk("userData/loginWithGithubPo
     const response = await signInWithGithubPopup();
     const { displayName, email } = response.user;
     await createUserDocumentFromAuth(response.user);
-    await createUserMovieListDocument(response.user, [])
+    await createUserMovieListDocument({ email, displayName }, [])
     dispatch(getMovieList(email!))
     return { displayName, email }
-
 })
 
 export const userSlice = createSlice({
@@ -65,7 +65,6 @@ export const userSlice = createSlice({
         stopLoading: (state) => {
             state.loading = false
         }
-
     },
     extraReducers(builder) {
         builder.addCase(loginWithGooglePopup.fulfilled, (state, action: PayloadAction<UserDetails>) => {
@@ -82,7 +81,6 @@ export const userSlice = createSlice({
             state.status = "authing";
         }).addCase(getCurrentUser.rejected, (state) => {
             state.status = "unauth";
-        }).addCase(logCurrentUserOut.fulfilled, (state) => {
             state.userData = {
                 email: '',
                 displayName: '',
@@ -91,6 +89,16 @@ export const userSlice = createSlice({
         }).addCase(loginWithGithubPopup.fulfilled, (state, action: PayloadAction<UserDetails>) => {
             state.userData = action.payload;
             state.status = "authed";
+        }).addCase(loginWithGithubPopup.pending, (state) => {
+            state.status = "authing";
+        }).addCase(loginWithGithubPopup.rejected, (state) => {
+            state.status = "unauth";
+        }).addCase(logCurrentUserOut.fulfilled, (state) => {
+            state.status = "unauth";
+            state.userData = {
+                email: '',
+                displayName: '',
+            };
         })
     }
 })

@@ -34,10 +34,10 @@ export type MovieList = {
 
 export type MovieListInitialState = {
     movies: {
-        popularMovies: {},
-        topRatedMovies: {},
-        nowPlayingMovies: {},
-        upcomingMovies: {},
+        popularMovies: MovieList,
+        topRatedMovies: MovieList,
+        nowPlayingMovies: MovieList,
+        upcomingMovies: MovieList,
     }
 }
 
@@ -46,7 +46,7 @@ export type MovieListInitialState = {
 // create a movie list type
 export type UserMovieList = {
     listOfMovies: Movie[] | undefined | null | []
-    feedbackMessage?:boolean
+    feedbackMessage?: boolean
 }
 
 // create a user movie list state type

@@ -3,19 +3,24 @@ import addIcon from '../../assets/icons/add.svg'
 import starIcon from '../../assets/icons/star.svg';
 import { useDispatch } from 'react-redux';
 import { addMovieToList, hideFeedbackMessage, showFeedbackMessage } from '../../features/movie/userMovieList';
+import { Movie } from '../../features/movie/movie.types';
+import { FC } from 'react';
 
+type CardProps = {
+  movie: Movie
+}
 
-const Card = ({ movie }) => {
+const Card:FC<CardProps> = ({ movie }) => {
   const dispatch = useDispatch()
 
 
-  const addToUserMovieList = (movie) => {
+  const addToUserMovieList = (movie:Movie) => {
     dispatch(addMovieToList(movie))
     dispatch(showFeedbackMessage())
     setTimeout(()=>dispatch(hideFeedbackMessage()), 2000);
   }
 
-  const goToMovie = (movie_id) => {
+  const goToMovie = (movie_id: number) => {
     window.location.href = `/${movie_id}`
   }
 

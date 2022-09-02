@@ -12,7 +12,6 @@ import { storeGetNowPlayingMovies, storeGetPopularMovies, storeGetTopRatedMovies
 import { useAppDispatch } from "../../utilities/hooks/appdispatch";
 import { useAppSelector } from "../../utilities/hooks/rootstate";
 
-
 const defaultformFields = {
   email: "",
   password: "",

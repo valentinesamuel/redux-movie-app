@@ -19,11 +19,12 @@ const UserMovies = () => {
     const saveListToDatabase = () => {
         dispatch(saveMovieList({ auth, movies }))
     }
-
+    
     const clearUserMovieList = () => {
         // eslint-disable-next-line no-restricted-globals
         if (confirm(`${auth.displayName}, are you sure you want to clear your list?`)) {
             dispatch(clearMovieList())
+            dispatch(saveMovieList({ auth, movies }))
         }
     }
 
@@ -32,13 +33,13 @@ const UserMovies = () => {
     }
     return (
         <UserMoviesContainer>
-
-            {movies.length > 0 ? (
-                <>
                     <ButtonContainer>
                         <Button onClick={saveListToDatabase} className="leftbtn" buttonType={BUTTON_TYPE_CLASSES.white}>Save List</Button>
                         <Button onClick={clearUserMovieList} buttonType={BUTTON_TYPE_CLASSES.red}>Clear List</Button>
                     </ButtonContainer>
+
+            {movies.length > 0 ? (
+                <>
                     <MovieListContainer>
                         {movies.map(movie => {
                             return <CardContainer >

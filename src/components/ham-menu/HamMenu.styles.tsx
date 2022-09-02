@@ -8,8 +8,8 @@ cursor:pointer;
 display:none;
 flex-direction:column;
 div{
-    background-color: ${COLORS.white};
-    height:.1rem;
+    background-color: ${COLORS.red};
+    height:.2rem;
     margin:.3rem 0 0 .3rem;
 }
 

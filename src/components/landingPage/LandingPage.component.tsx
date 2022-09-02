@@ -48,17 +48,6 @@ const LandingPage = () => {
                         <h2>Watch instantly</h2>
                         <p>Available on phone and tablet wherever you go.</p>
                     </WatchAction>
-                    {/* <WatchAction>
-                        <RedText>
-                            <Icon>
-                                <FaTv className="red-icon" size="sm" style={{ backgroundColor: 'red' }} />
-                            </Icon>
-                        </RedText>
-                        <h2>Watch on your TV</h2>
-                        <p>
-                            Watch right on <p>https://feemflix.netlify.app/</p>
-                        </p>
-                    </WatchAction> */}
                 </WatchActionsContainer>
             </WatchSection>
         </HomeContainer>

@@ -7,7 +7,7 @@ const LandingPage = () => {
 
     
     const onGetMovie = async () => {
-       
+       alert("Please login or signup to see movies")
     }
     return (
         <HomeContainer>

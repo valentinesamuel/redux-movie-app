@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FONTWEIGHT } from "../../utilities/designTokens";
+import { COLORS, FONTWEIGHT } from "../../utilities/designTokens";
 
 export const FooterContainer = styled.footer`
   display: flex;
@@ -57,6 +57,13 @@ flex-direction:column;
 export const ExternalLink = styled.a`
   text-decoration: none;
   margin: 0.625rem 0;
+  color: ${COLORS.white};
+cursor:pointer;
+
+  &:hover{
+
+    text-decoration:underline;
+  }
 `;
 
 

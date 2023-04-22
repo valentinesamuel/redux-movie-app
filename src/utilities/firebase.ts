@@ -70,7 +70,6 @@ export const getUser = async (email: string) => {
   const q = query(collectionRef, where("email", "==", email));
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
-
 }
 
 export const getUserMovieList = async (email: string) => {
